@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { WeatherService } from '../weather.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-weather-search-form',
@@ -7,10 +9,12 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./weather-search-form.component.css']
 })
 export class WeatherSearchFormComponent implements OnInit {
-  addressForm
-  hasEmptyInput
+  addressForm;
+  showErrorMessages;
   constructor(
     private formBuilder: FormBuilder,
+    private weatherService: WeatherService,
+    private router: Router,
   ) { 
     this.addressForm = this.formBuilder.group({
       street: '',
@@ -18,7 +22,7 @@ export class WeatherSearchFormComponent implements OnInit {
       state: '',
     });
 
-    this.hasEmptyInput = {
+    this.showErrorMessages = {
       street: false,
       city: false,
       state: false,
@@ -26,23 +30,41 @@ export class WeatherSearchFormComponent implements OnInit {
   }
 
   onSubmit(addressData) {
-    console.log(addressData);
-    this.checkForm(addressData);
+    if (this.hasEmptyInputs(addressData)) return;
+
+    const {
+      street,
+      city,
+      state,
+    } = addressData;
+
+    this.router.navigate(['/currentWeather'], {
+      queryParams: {
+        street,
+        city,
+        state,
+      },
+    });
   }
 
   onResetForm() {
     this.addressForm.reset();
-    this.hasEmptyInput = {
+    this.showErrorMessages = {
       street: false,
       city: false,
       state: false,
     };
+    this.router.navigate(['/']);
   }
 
-  checkForm(addressData) {
+  hasEmptyInputs(addressData) {
+    let hasEmptyInput = false;
     for (let input in addressData) {
-      this.hasEmptyInput[input] = addressData[input].length === 0;
+      hasEmptyInput = hasEmptyInput || addressData[input] === null||  addressData[input].length === 0;
+      this.showErrorMessages[input] = addressData[input] === null||  addressData[input].length === 0;
     }
+
+    return hasEmptyInput;
   }
 
   ngOnInit() {

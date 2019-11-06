@@ -12,9 +12,10 @@ export class WeatherSearchFormComponent implements OnInit {
   addressForm;
   showErrorMessages;
   statesOptions;
+  disabledSearch;
+
   constructor(
     private formBuilder: FormBuilder,
-    private weatherService: WeatherService,
     private router: Router,
   ) { 
     this.addressForm = this.formBuilder.group({
@@ -83,6 +84,9 @@ export class WeatherSearchFormComponent implements OnInit {
       WI: 'Wisconsin',
       WY: 'Wyoming',
     };
+
+    this.disabledSearch = true;
+    this.onInputChanges();
   }
 
   onSubmit(addressData) {
@@ -103,22 +107,46 @@ export class WeatherSearchFormComponent implements OnInit {
     });
   }
 
+  onInputChanges() {
+    this.addressForm.valueChanges.subscribe((inputs: any) => {
+      const {
+        street,
+        city,
+        state,
+      } = inputs;
+
+      this.toggleDisableSearchButton(street, city, state);
+    });
+  }
+
+  toggleDisableSearchButton(street: string, city: string, state: string) {
+    const hasNonEmptyInputs = street !== '' && city !== '' && state !== '';
+    if (hasNonEmptyInputs) {
+      this.disabledSearch = false;
+    } else {
+      this.disabledSearch = true;
+    }
+  }
+
   onResetForm() {
     this.addressForm = this.formBuilder.group({
       street: '',
       city: '',
       state: '',
     });
+
+    this.disabledSearch = true;
   
     this.showErrorMessages = {
       street: false,
       city: false,
       state: false,
     };
+    this.onInputChanges();
     this.router.navigate(['/']);
   }
 
-  hasEmptyInputs(addressData) {
+  hasEmptyInputs(addressData: object) {
     let hasEmptyInput = false;
     for (let input in addressData) {
       hasEmptyInput = hasEmptyInput || addressData[input] === null||  addressData[input].length === 0;

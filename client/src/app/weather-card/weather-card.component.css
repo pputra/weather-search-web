@@ -1,4 +1,4 @@
-.container {
+#card-container {
   background-color: #5A87A2;
-  width: 50%;
+  margin: 0 auto;
 }

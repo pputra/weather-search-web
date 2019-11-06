@@ -1,26 +1,35 @@
-<div class="container">
- <div class="row">
-  <div class="col-sm-10">
-    <div>
-      {{city}}
+<div id="card-container" class="p-5  w-75 d-flex justify-content-center flex-column">
+  <div class="row">
+    <div class="col-8">
+      <div class="mb-3">
+        <h1>{{ city }}</h1>
+      </div>
+      <div class="mb-3">
+        {{ timezone }}
+      </div>
+      <div class="mb-3">
+        {{ currently?.temperature }}F
+      </div>
+      <div class="mb-3">
+        {{ currently?.summary }}
+      </div>
     </div>
-    <div>
-      {{timezone}}
-    </div>
-    <div>
-      {{currently.temperature}}F
-    </div>
-    <div>
-      {{currently.summary}}
+    <div class="col-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Seal_of_New_York.svg/2000px-Seal_of_New_York.svg.png" height="200px" width="200px">
     </div>
   </div>
-  <div class="col-sm-2">
-    logo
+  <div class="row mt-3">
+    <div class="col">
+      item1
+    </div>
+    <div class="col">
+      item2
+    </div>
+    <div class="col">
+      item3
+    </div>
+    <div class="col">
+      item4
+    </div>
   </div>
- </div>
- <div class="row">
-  <div>
-    
-  </div>
- </div>
 </div>

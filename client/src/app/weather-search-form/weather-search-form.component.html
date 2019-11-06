@@ -8,7 +8,8 @@
       <div class="col-sm-10">
         <input type="street" class="form-control" id="street-input" aria-describedby="streetHelp"
           placeholder="Enter Street Name" formControlName="street">
-        <small id="street-input-empty-warning" class="text-danger" *ngIf="showErrorMessages.street">Please enter a street.</small>
+        <small id="street-input-empty-warning" class="text-danger" *ngIf="showErrorMessages.street">Please enter a
+          street.</small>
       </div>
     </div>
 
@@ -17,16 +18,22 @@
       <div class="col-sm-10">
         <input type="city" class="form-control" id="city-input" aria-describedby="cityHelp"
           placeholder="Enter City Name" formControlName="city">
-        <small id="city-input-empty-warning" class="text-danger" *ngIf="showErrorMessages.city">Please enter a city.</small>
+        <small id="city-input-empty-warning" class="text-danger" *ngIf="showErrorMessages.city">Please enter a
+          city.</small>
       </div>
     </div>
 
     <div class="form-group row">
       <label for="state-input" class="col-sm-2 col-form-label">State</label>
       <div class="col-sm-10">
-        <input type="state" class="form-control" id="state-input" aria-describedby="stateHelp"
-          placeholder="Enter State Name" formControlName="state">
-        <small id="state-input-empty-warning" class="text-danger" *ngIf="showErrorMessages.state">Please enter a state.</small>
+        <select class="form-control" id="state-input" aria-describedby="stateHelp" formControlName="state">
+          <option *ngFor="let option of statesOptions | keyvalue" [value]="option.key"
+            [attr.selected]="option.value == '' ? true : null">
+            {{ option.value }}
+          </option>
+        </select>
+        <small id="state-input-empty-warning" class="text-danger" *ngIf="showErrorMessages.state">Please enter a
+          state.</small>
       </div>
     </div>
 

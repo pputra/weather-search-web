@@ -1,1 +1,3 @@
-<p>current-weather {{currWeatherData}}</p>
+<div class="container">
+  <app-weather-card [currently]=weatherData?.currently [timezone]=weatherData?.timezone [city]=city></app-weather-card>
+</div>

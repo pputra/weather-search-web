@@ -5,3 +5,8 @@
   flex-direction: column;
   width: 100%;
 }
+
+#outlet {
+  margin-top: 3%;
+  width: 100%;
+}

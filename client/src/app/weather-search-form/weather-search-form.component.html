@@ -1,11 +1,12 @@
-<div id="search-form" class="text-white">
-  <h1>Weather Search</h1>
+<div id="search-form" class="text-white p-4 h-100 rounded border border-dark shadow-lg">
+  <form [formGroup]="addressForm" (ngSubmit)="onSubmit(addressForm.value)" class="p-1">
+    <div class="form-group mb-4">
+      <h1 class="text-center">Weather Search</h1>
+    </div>
 
-  <form [formGroup]="addressForm" (ngSubmit)="onSubmit(addressForm.value)">
-
-    <div class="form-group row">
+    <div class="form-group row mb-4">
       <label for="street-input" class="col-sm-2 col-form-label">Street</label>
-      <div class="col-sm-10">
+      <div class="col-sm-7">
         <input type="street" class="form-control" id="street-input" aria-describedby="streetHelp"
           placeholder="Enter Street Name" formControlName="street">
         <small id="street-input-empty-warning" class="text-danger" *ngIf="showErrorMessages.street">Please enter a
@@ -13,9 +14,9 @@
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group row mb-4">
       <label for="city-input" class="col-sm-2 col-form-label">City</label>
-      <div class="col-sm-10">
+      <div class="col-sm-7">
         <input type="city" class="form-control" id="city-input" aria-describedby="cityHelp"
           placeholder="Enter City Name" formControlName="city">
         <small id="city-input-empty-warning" class="text-danger" *ngIf="showErrorMessages.city">Please enter a
@@ -23,9 +24,9 @@
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group row mb-4">
       <label for="state-input" class="col-sm-2 col-form-label">State</label>
-      <div class="col-sm-10">
+      <div class="col-sm-5">
         <select class="form-control" id="state-input" aria-describedby="stateHelp" formControlName="state">
           <option *ngFor="let option of statesOptions | keyvalue" [value]="option.key"
             [attr.selected]="option.value == '' ? true : null">
@@ -37,11 +38,11 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-sm-2">
+    <div class="row ml-1">
+      <div class="col-4 col-lg-1 col-md-1">
         <button type="submit" class="btn btn-primary">Search</button>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
         <button type="button" class="btn btn-primary" (click)="onResetForm()">Clear</button>
       </div>
     </div>

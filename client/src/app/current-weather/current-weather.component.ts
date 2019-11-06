@@ -19,10 +19,15 @@ export class CurrentWeatherComponent implements OnInit {
         street,
         city,
         state,
+        lat,
+        lon,
       } = queries;
-      weatherService.getWeatherDataByFullAddress(street, city, state);
-    
-      this.currWeatherData = JSON.stringify(queries);
+
+      weatherService.getWeatherDataByFullAddress(street, city, state).subscribe((response: any) => {
+        let weatherData = response;
+
+        this.currWeatherData = JSON.stringify(weatherData);
+      });
     });
   }
 

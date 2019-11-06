@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CurrentWeatherComponent implements OnInit {
   city;
+  stateSeal;
   weatherData;
   
   constructor(
@@ -25,10 +26,13 @@ export class CurrentWeatherComponent implements OnInit {
       } = queries;
 
       weatherService.getWeatherDataByFullAddress(street, city, state).subscribe((response: any) => {
+        const {
+          stateSeal,
+          weatherData,
+        } = response;
         this.city = city;
-        let weatherData = response.weatherData;
-
-        this.weatherData = weatherData;
+        this.stateSeal = stateSeal;
+        this.weatherData = weatherData;;
       });
     });
   }

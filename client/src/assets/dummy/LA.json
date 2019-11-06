@@ -1,5 +1,6 @@
 {
   "message": "weather data has been fetched",
+  "stateSeal": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Seal_of_New_York.svg/2000px-Seal_of_New_York.svg.png",
   "weatherData": {
     "latitude": 29.9589354,
     "longitude": -90.0608556,

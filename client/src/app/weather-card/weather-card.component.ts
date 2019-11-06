@@ -9,6 +9,7 @@ export class WeatherCardComponent implements OnInit {
   @Input() city;
   @Input() currently;
   @Input() timezone;
+  @Input() stateSeal;
   constructor() { }
 
   ngOnInit() {

@@ -2,9 +2,6 @@ const request = require('request-promise');
 
 module.exports = {
   getCoordinateByFullAddress: async (street, city, state) => {
-    street='figueroa';
-    city='los angeles';
-    state="CA";
     try {
       const uri = `https://maps.googleapis.com/maps/api/geocode/json?address=${street},${city},
         ${state}&key=${process.env.GOOGLE_API_KEY}`;

@@ -8,11 +8,18 @@ module.exports = {
         street,
         city,
         state,
-      } = req.body;
+        lat,
+        lon,
+      } = req.query;
 
-      const { lat: latitude, lon: longitude } = await getCoordinateByFullAddress(street, city, state);
-
-      const weatherData = await getWeatherByCoordinate(latitude, longitude);
+      let weatherData;
+  
+      if (lat && lon) {
+        weatherData = await getWeatherByCoordinate(lat, lon);
+      } else {
+        const { lat: latitude, lon: longitude } = await getCoordinateByFullAddress(street, city, state);
+        weatherData = await getWeatherByCoordinate(latitude, longitude);
+      }
 
       return res.status(200).json({
         message: "weather data has been fetched",

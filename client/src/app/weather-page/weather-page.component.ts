@@ -3,11 +3,11 @@ import { WeatherService } from '../weather.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-current-weather',
-  templateUrl: './current-weather.component.html',
-  styleUrls: ['./current-weather.component.css']
+  selector: 'app-weather-page',
+  templateUrl: './weather-page.component.html',
+  styleUrls: ['./weather-page.component.css']
 })
-export class CurrentWeatherComponent implements OnInit {
+export class WeatherPageComponent implements OnInit {
   city;
   stateSeal;
   weatherData;

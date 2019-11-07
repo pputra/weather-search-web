@@ -10,7 +10,6 @@
   </li>
 </ul>
 <app-weather-card 
-  style="width:100%" 
   *ngIf="activeTab ==='current'"
   [timezone]=weatherData?.timezone 
   [city]=city
@@ -23,5 +22,9 @@
   [visibility]=weatherData?.currently?.visibility
   [cloudCover]=weatherData?.currently?.cloudCover
   [ozone]=weatherData?.currently?.ozone
-  >
+>
 </app-weather-card>
+<app-hourly-weather
+  *ngIf="activeTab ==='hourly'"
+>
+</app-hourly-weather>

@@ -5,18 +5,20 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CurrentWeatherComponent } from './current-weather/current-weather.component';
+import { WeatherPageComponent } from './weather-page/weather-page.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { WeatherSearchFormComponent } from './weather-search-form/weather-search-form.component';
 import { WeatherCardComponent } from './weather-card/weather-card.component';
+import { HourlyWeatherComponent } from './hourly-weather/hourly-weather.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CurrentWeatherComponent,
+    WeatherPageComponent,
     FavoritesComponent,
     WeatherSearchFormComponent,
-    WeatherCardComponent
+    WeatherCardComponent,
+    HourlyWeatherComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,6 @@ import { WeatherCardComponent } from './weather-card/weather-card.component';
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -5,20 +5,20 @@
     </div>
 
     <div class="form-group row mb-4">
-      <label for="street-input" class="col-sm-2 col-form-label">Street</label>
+      <label for="street-input" class="col-sm-2 col-form-label">Street<span class="text-danger">*</span></label>
       <div class="col-sm-7">
         <input type="street" class="form-control" id="street-input" aria-describedby="streetHelp"
-          placeholder="Enter Street Name" formControlName="street">
+          placeholder="Enter Street Name" formControlName="street" (blur)="toggleWarningMessages('street', $event.target.value)">
         <small id="street-input-empty-warning" class="text-danger" *ngIf="showErrorMessages.street">Please enter a
           street.</small>
       </div>
     </div>
 
     <div class="form-group row mb-4">
-      <label for="city-input" class="col-sm-2 col-form-label">City</label>
+      <label for="city-input" class="col-sm-2 col-form-label">City<span class="text-danger">*</span></label>
       <div class="col-sm-7">
         <input type="city" class="form-control" id="city-input" aria-describedby="cityHelp"
-          placeholder="Enter City Name" formControlName="city">
+          placeholder="Enter City Name" formControlName="city" (blur)="toggleWarningMessages('city', $event.target.value)">
         <small id="city-input-empty-warning" class="text-danger" *ngIf="showErrorMessages.city">Please enter a
           city.</small>
       </div>

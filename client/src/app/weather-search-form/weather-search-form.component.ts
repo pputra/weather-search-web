@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { WeatherService } from '../weather.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -117,6 +116,10 @@ export class WeatherSearchFormComponent implements OnInit {
 
       this.toggleDisableSearchButton(street, city, state);
     });
+  }
+
+  toggleWarningMessages(key, val) {
+    this.showErrorMessages[key] = val === '' ? true : false;
   }
 
   toggleDisableSearchButton(street: string, city: string, state: string) {

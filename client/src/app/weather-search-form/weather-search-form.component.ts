@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { WeatherService } from '../weather.service';
+import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-weather-search-form',
@@ -17,6 +18,7 @@ export class WeatherSearchFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private loaderService: LoaderService,
     private weatherService: WeatherService,
   ) { 
     this.addressForm = this.formBuilder.group({
@@ -181,6 +183,7 @@ export class WeatherSearchFormComponent implements OnInit {
     };
     this.onInputChanges();
     this.router.navigate(['/']);
+    this.loaderService.isLoading.next(false);
   }
 
   hasEmptyInputs(addressData: object) {

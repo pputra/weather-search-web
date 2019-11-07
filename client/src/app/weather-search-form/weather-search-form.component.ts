@@ -145,11 +145,20 @@ export class WeatherSearchFormComponent implements OnInit {
     this.showErrorMessages[key] = val === '' ? true : false;
   }
 
-  toggleDisableInputs(isDisabled) {
+  toggleDisableInputs(isDisabled) { 
     if (isDisabled) {
+      this.addressForm.get('street').setValue('');
+      this.addressForm.get('city').setValue('');
+      this.addressForm.get('state').setValue('');
       this.addressForm.get('street').disable();
       this.addressForm.get('city').disable();
       this.addressForm.get('state').disable();
+
+      this.showErrorMessages = {
+        street: false,
+        city: false,
+        state: false,
+      };
     } else {
       this.addressForm.get('street').enable();
       this.addressForm.get('city').enable();
@@ -167,6 +176,10 @@ export class WeatherSearchFormComponent implements OnInit {
   }
 
   onResetForm() {
+    this.addressForm.get('street').enable();
+    this.addressForm.get('city').enable();
+    this.addressForm.get('state').enable();
+  
     this.addressForm = this.formBuilder.group({
       street: '',
       city: '',

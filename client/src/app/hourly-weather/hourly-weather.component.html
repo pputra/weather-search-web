@@ -12,7 +12,7 @@
   *ngFor="let config of chartConfigs | keyvalue:sortObjectByIndex"
 >
   <div style="display: block;" 
-    *ngIf="activeChart === config.value.data[0].label" >
+    *ngIf="activeChart === config.value.data[0].label">
       <canvas 
         baseChart 
         [datasets]="config.value.data" 

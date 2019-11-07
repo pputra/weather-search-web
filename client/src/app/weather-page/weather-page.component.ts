@@ -12,6 +12,7 @@ export class WeatherPageComponent implements OnInit {
   city;
   stateSeal;
   weatherData;
+  hourlyDataSet;
 
   activeTab;
   isLoading;
@@ -50,6 +51,7 @@ export class WeatherPageComponent implements OnInit {
           this.stateSeal = stateSeal;
           this.weatherData = weatherData;;
 
+          this.createHourlyDataSet();
           loaderService.isLoading.next(false);
         });
       } else {
@@ -62,6 +64,7 @@ export class WeatherPageComponent implements OnInit {
           this.stateSeal = stateSeal;
           this.weatherData = weatherData;;
 
+          this.createHourlyDataSet();
           loaderService.isLoading.next(false);
         });
       }
@@ -70,6 +73,21 @@ export class WeatherPageComponent implements OnInit {
 
   setActiveTab(tab) {
     this.activeTab = tab;
+  }
+
+  createHourlyDataSet() {
+    this.hourlyDataSet = {
+      temperature: this.getHourlyDataByType('temperature'),
+      pressure: this.getHourlyDataByType('pressure'),
+      humidity: this.getHourlyDataByType('humidity'),
+      ozone: this.getHourlyDataByType('ozone'),
+      visibility: this.getHourlyDataByType('visibility'),
+      windSpeed: this.getHourlyDataByType('windSpeed'),
+    };
+  }
+
+  getHourlyDataByType(type: string) {
+    return this.weatherData.hourly.data.map((el) => el[type]);
   }
 
   ngOnInit() {

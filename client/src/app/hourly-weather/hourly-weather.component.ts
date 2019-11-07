@@ -6,7 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./hourly-weather.component.css']
 })
 export class HourlyWeatherComponent implements OnInit {
-  @Input() hourlyData;
+  @Input() hourlyDataSet;
+
   activeChart;
   chartOptions;
   chartConfigs;
@@ -18,7 +19,7 @@ export class HourlyWeatherComponent implements OnInit {
   barChartType = 'bar';
   barChartLegend = true;
 
-  constructor() { 
+  constructor() {
     this.activeChart = 'temperature'
     this.chartOptions = {
       Temperature: 'temperature',
@@ -28,19 +29,10 @@ export class HourlyWeatherComponent implements OnInit {
       Visibility: 'visibility',
       "Wind Speed": 'windSpeed',
     };
-
-    this.chartConfigs = {
-      temperature: this.createChartConfig('temperature', [], 'Fahrenheit'),
-      pressure: this.createChartConfig('pressure', [], 'Millibars'),
-      humidity: this.createChartConfig('humidity', [], '% Humidity'),
-      ozone: this.createChartConfig('ozone', [], 'Dobson Units'),
-      visibility: this.createChartConfig('visibility', [], 'Miles (Maximum 10)'),
-      windSpeed: this.createChartConfig('windSpeed', [], 'Miles per Hour'),
-    };
   }
 
   createChartConfig(label, data, yAxisLabel) {
-    return { data: [ { data: [28, 48, 40, 19, 86, 27, 90], label: label } ], yAxisLabel: yAxisLabel };
+    return { data: [ { data: data, label: label } ], yAxisLabel: yAxisLabel };
   }
 
   setActiveChart(dataType) {
@@ -52,7 +44,14 @@ export class HourlyWeatherComponent implements OnInit {
   }
   
   ngOnInit() {
-    
+    this.chartConfigs = {
+      temperature: this.createChartConfig('temperature', this.hourlyDataSet.temperature, 'Fahrenheit'),
+      pressure: this.createChartConfig('pressure', this.hourlyDataSet.pressure, 'Millibars'),
+      humidity: this.createChartConfig('humidity', this.hourlyDataSet.humidity, '% Humidity'),
+      ozone: this.createChartConfig('ozone', this.hourlyDataSet.ozone, 'Dobson Units'),
+      visibility: this.createChartConfig('visibility', this.hourlyDataSet.visibility, 'Miles (Maximum 10)'),
+      windSpeed: this.createChartConfig('windSpeed', this.hourlyDataSet.windSpeed, 'Miles per Hour'),
+    };
   }
 
 }

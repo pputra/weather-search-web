@@ -1,4 +1,26 @@
-<div id="hourly-chart-container" class="p-5  w-75 d-flex justify-content-center flex-column rounded border border-dark">
-  hourly
-</div>
-  
+<select class="form-control" id="exampleFormControlSelect1" (change)="setActiveChart($event.target.value)">
+  <option  
+    *ngFor="let option of chartOptions | keyvalue:sortObjectByIndex" 
+    [value]="option.value"
+    [attr.selected]="option.value === 'temperature' ? true : null"
+  >
+    {{ option.key }}
+  </option>
+</select>
+
+<ng-container 
+  *ngFor="let config of chartConfigs | keyvalue:sortObjectByIndex"
+>
+  <div style="display: block;" 
+    *ngIf="activeChart === config.value.data[0].label" >
+      <canvas 
+        baseChart 
+        [datasets]="config.value.data" 
+        [labels]="barChartLabels" 
+        [options]="barChartOptions"
+        [legend]="barChartLegend" 
+        [chartType]="barChartType"
+      >
+      </canvas>
+  </div>
+</ng-container>

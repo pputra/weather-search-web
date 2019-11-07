@@ -16,4 +16,15 @@ export class WeatherService {
 
     return this.http.get(url);
   }
+
+  getWeatherDataByCoordinate(lat, lon) {
+    const url = `${this.DEFAULT_URL}/weather?lat=${lat}&lon=${lon}`;
+    return this.http.get(url);
+  }
+
+  getUserCoordinate() {
+    const url = 'http://ip-api.com/json';
+
+    return this.http.get(url);
+  }
 }

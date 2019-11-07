@@ -18,7 +18,7 @@ export class WeatherPageComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private weatherService: WeatherService,
   ) { 
-    this.activeTab = 'hourly';
+    this.activeTab = 'current';
 
     this.activeRoute.queryParams.subscribe(queries => {
       const {
@@ -29,15 +29,29 @@ export class WeatherPageComponent implements OnInit {
         lon,
       } = queries;
 
-      weatherService.getWeatherDataByFullAddress(street, city, state).subscribe((response: any) => {
-        const {
-          stateSeal,
-          weatherData,
-        } = response;
-        this.city = city;
-        this.stateSeal = stateSeal;
-        this.weatherData = weatherData;;
-      });
+      const useCurrentLocation = lat !== undefined && lon !== undefined;
+
+      if (useCurrentLocation) {
+        weatherService.getWeatherDataByCoordinate(lat, lon).subscribe((response: any) => {
+          const {
+            stateSeal,
+            weatherData,
+          } = response;
+          this.city = city;
+          this.stateSeal = stateSeal;
+          this.weatherData = weatherData;;
+        });
+      } else {
+        weatherService.getWeatherDataByFullAddress(street, city, state).subscribe((response: any) => {
+          const {
+            stateSeal,
+            weatherData,
+          } = response;
+          this.city = city;
+          this.stateSeal = stateSeal;
+          this.weatherData = weatherData;;
+        });
+      }
     });
   }
 

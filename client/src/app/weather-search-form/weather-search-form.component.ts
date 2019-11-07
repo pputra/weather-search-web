@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { WeatherService } from '../weather.service';
 
 @Component({
   selector: 'app-weather-search-form',
@@ -16,11 +17,13 @@ export class WeatherSearchFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private weatherService: WeatherService,
   ) { 
     this.addressForm = this.formBuilder.group({
       street: '',
       city: '',
       state: '',
+      useCurrentLocation: false,
     });
 
     this.showErrorMessages = {
@@ -85,25 +88,43 @@ export class WeatherSearchFormComponent implements OnInit {
     };
 
     this.disabledSearch = true;
+  
     this.onInputChanges();
   }
 
   onSubmit(addressData) {
-    if (this.hasEmptyInputs(addressData)) return;
-
     const {
       street,
       city,
       state,
+      useCurrentLocation,
     } = addressData;
 
-    this.router.navigate(['/currentWeather'], {
-      queryParams: {
-        street,
-        city,
-        state,
-      },
-    });
+    if (useCurrentLocation) {
+      this.weatherService.getUserCoordinate().subscribe((result: any) => {
+        const {
+          lat,
+          lon,
+          city,
+        } = result;
+
+        this.router.navigate(['/currentWeather'], {
+          queryParams: {
+            lat,
+            lon,
+            city,
+          },
+        });
+      });
+    } else {
+      this.router.navigate(['/currentWeather'], {
+        queryParams: {
+          street,
+          city,
+          state,
+        },
+      });
+    }
   }
 
   onInputChanges() {
@@ -122,6 +143,18 @@ export class WeatherSearchFormComponent implements OnInit {
     this.showErrorMessages[key] = val === '' ? true : false;
   }
 
+  toggleDisableInputs(isDisabled) {
+    if (isDisabled) {
+      this.addressForm.get('street').disable();
+      this.addressForm.get('city').disable();
+      this.addressForm.get('state').disable();
+    } else {
+      this.addressForm.get('street').enable();
+      this.addressForm.get('city').enable();
+      this.addressForm.get('state').enable();
+    }
+  }
+
   toggleDisableSearchButton(street: string, city: string, state: string) {
     const hasNonEmptyInputs = street !== '' && city !== '' && state !== '';
     if (hasNonEmptyInputs) {
@@ -136,6 +169,7 @@ export class WeatherSearchFormComponent implements OnInit {
       street: '',
       city: '',
       state: '',
+      useCurrentLocation: false,
     });
 
     this.disabledSearch = true;

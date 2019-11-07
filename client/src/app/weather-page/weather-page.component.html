@@ -26,5 +26,6 @@
 </app-weather-card>
 <app-hourly-weather
   *ngIf="activeTab ==='hourly'"
+  [hourlyData]="weatherData?.hourly?.data"
 >
 </app-hourly-weather>

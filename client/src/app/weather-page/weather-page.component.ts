@@ -18,7 +18,7 @@ export class WeatherPageComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private weatherService: WeatherService,
   ) { 
-    this.activeTab = 'current';
+    this.activeTab = 'hourly';
 
     this.activeRoute.queryParams.subscribe(queries => {
       const {

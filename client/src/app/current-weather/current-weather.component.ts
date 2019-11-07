@@ -11,11 +11,15 @@ export class CurrentWeatherComponent implements OnInit {
   city;
   stateSeal;
   weatherData;
+
+  activeTab;
   
   constructor(
     private activeRoute: ActivatedRoute,
     private weatherService: WeatherService,
   ) { 
+    this.activeTab = 'current';
+
     this.activeRoute.queryParams.subscribe(queries => {
       const {
         street,
@@ -35,6 +39,10 @@ export class CurrentWeatherComponent implements OnInit {
         this.weatherData = weatherData;;
       });
     });
+  }
+
+  setActiveTab(tab) {
+    this.activeTab = tab;
   }
 
   ngOnInit() {

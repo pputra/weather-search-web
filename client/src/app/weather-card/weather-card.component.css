@@ -2,3 +2,10 @@
   background-color: #5A87A2;
   margin: 0 auto;
 }
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

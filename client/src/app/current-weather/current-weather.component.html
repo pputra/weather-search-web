@@ -1,3 +1,12 @@
- <app-weather-card style="width:100%" [currently]=weatherData?.currently [timezone]=weatherData?.timezone [city]=city
-   [stateSeal]=stateSeal>
+ <app-weather-card style="width:100%" [timezone]=weatherData?.timezone [city]=city
+   [stateSeal]=stateSeal
+   [temperature]=weatherData?.currently?.temperature
+   [summary]=weatherData?.currently?.summary
+   [humidity]=weatherData?.currently?.humidity
+   [pressure]=weatherData?.currently?.pressure
+   [windSpeed]=weatherData?.currently?.windSpeed
+   [visibility]=weatherData?.currently?.visibility
+   [cloudCover]=weatherData?.currently?.cloudCover
+   [ozone]=weatherData?.currently?.ozone
+   >
  </app-weather-card>

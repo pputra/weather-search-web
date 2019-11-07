@@ -1,17 +1,17 @@
-<div id="card-container" class="p-5  w-75 d-flex justify-content-center flex-column">
+<div id="card-container" class="p-5  w-75 d-flex justify-content-center flex-column rounded border border-dark">
   <div class="row">
     <div class="col-8">
       <div class="mb-3">
         <h1>{{ city }}</h1>
       </div>
       <div class="mb-3">
-        {{ timezone }}
+        <h1>{{ timezone }}</h1>
       </div>
       <div class="mb-3">
-        {{ currently?.temperature }}F
+        <h1>{{ temperature }}F</h1>
       </div>
       <div class="mb-3">
-        {{ currently?.summary }}
+        <h2>{{ summary }}</h2>
       </div>
     </div>
     <div class="col-2">
@@ -19,17 +19,53 @@
     </div>
   </div>
   <div class="row mt-3">
-    <div class="col">
-      item1
+    <div class="col icon">
+      <div>
+        <img [src]="WEATHER_ICON_SOURCES.humidity" height="50px" width="50px" >
+      </div>
+      <div>
+        {{ humidity }}
+      </div>
     </div>
-    <div class="col">
-      item2
+    <div class="col icon">
+      <div>
+        <img [src]="WEATHER_ICON_SOURCES.pressure" height="50px" width="50px" >
+      </div>
+      <div>
+        {{ pressure }}
+      </div>
     </div>
-    <div class="col">
-      item3
+    <div class="col icon">
+      <div>
+        <img [src]="WEATHER_ICON_SOURCES.windSpeed" height="50px" width="50px" >
+      </div>
+      <div>
+        {{ windSpeed }}
+      </div>
     </div>
-    <div class="col">
-      item4
+    <div class="col icon">
+      <div>
+        <img [src]="WEATHER_ICON_SOURCES.visibility" height="50px" width="50px" >
+      </div>
+      <div>
+        {{ visibility }}
+      </div>
     </div>
+    <div class="col icon">
+      <div>
+        <img [src]="WEATHER_ICON_SOURCES.cloudCover" height="50px" width="50px" >
+      </div>
+      <div>
+        {{ cloudCover }}
+      </div>
+    </div>
+    <div class="col icon">
+      <div>
+        <img [src]="WEATHER_ICON_SOURCES.ozone" height="50px" width="50px" >
+      </div>
+      <div>
+        {{ ozone }}
+      </div>
+      </div>
   </div>
 </div>

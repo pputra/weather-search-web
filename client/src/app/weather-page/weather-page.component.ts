@@ -103,12 +103,20 @@ export class WeatherPageComponent implements OnInit {
   toggleFavorite() {
     const hasBeenAdded = localStorage.getItem(this.city) !== null;
     if (!hasBeenAdded) {
-      localStorage.setItem(this.city, this.state);
+      localStorage.setItem(this.city, this.createLocalStorageFavoriteData(this.city, this.state, this.stateSeal));
     } else {
       localStorage.removeItem(this.city);
     }
 
     this.setIsFavorited();
+  }
+
+  createLocalStorageFavoriteData(city, state, image) {
+    return JSON.stringify({
+      city,
+      state,
+      image,
+    });
   }
 
   ngOnInit() {

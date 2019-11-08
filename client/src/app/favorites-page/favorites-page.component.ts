@@ -12,20 +12,19 @@ export class FavoritesPageComponent implements OnInit {
 
   ngOnInit() {
     this.hasFavorite = localStorage.length > 0;
-
     this.createFavoritesFromLocalStorage();
   }
 
   createFavoritesFromLocalStorage() {
     for (let i = 0; i < localStorage.length; i++) {
       const city = localStorage.key(i);
+      const data = JSON.parse(localStorage.getItem(city));
       this.favorites.push({
         city,
-        state: localStorage.getItem(city),
+        state: data.state,
+        image: data.image,
       });
     }
-
-    this.favorites.reverse();
   }
 
 }

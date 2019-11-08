@@ -27,4 +27,11 @@ export class FavoritesPageComponent implements OnInit {
     }
   }
 
+  removeFromFavorite(city) {
+    localStorage.removeItem(city);
+    this.favorites = [];
+    this.hasFavorite = localStorage.length > 0;
+    this.createFavoritesFromLocalStorage();
+  }
+
 }

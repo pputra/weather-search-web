@@ -1,5 +1,32 @@
 <ng-container *ngIf="hasFavorite;else warning">
-  Fav Table
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Favorites</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let favorite of favorites; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td><img [src]="favorite.image" height="40px" width="40px" ></td>
+        <td>{{ favorite.city }}</td>
+        <td>{{ favorite.state }} </td>
+        <td>
+          <button 
+            type="button" 
+            class="btn btn-light"
+            (click)="removeFromFavorite(favorite.city)"
+          >
+            <i class="material-icons yellow">delete</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </ng-container>
 <ng-template #warning>
   <app-alert

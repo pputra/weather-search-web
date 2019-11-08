@@ -1,5 +1,5 @@
 <ng-container *ngIf="!isLoading">
-  <div class="nav nav-tabs mb-5">
+  <ul class="nav nav-tabs mb-5">
     <li class="nav-item">
       <a class="nav-link" (click)="setActiveTab('current')" [ngClass]="{active: activeTab ==='current'}">Current</a>
     </li>
@@ -16,7 +16,7 @@
       <i class="material-icons active-favorite" *ngIf="isFavorited; else elseBlock">star</i>
       <ng-template #elseBlock><i class="material-icons">star_border</i></ng-template>
     </button>
-  </div>
+  </ul>
   <app-weather-card 
     *ngIf="activeTab ==='current'"
     [timezone]=weatherData?.timezone

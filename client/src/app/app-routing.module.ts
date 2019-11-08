@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WeatherPageComponent } from './weather-page/weather-page.component';
-import { FavoritesComponent } from '../app/favorites/favorites.component';
+import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 
 const routes: Routes = [
   { path: 'currentWeather', component: WeatherPageComponent },
-  { path: 'favorites', component: FavoritesComponent },
+  { path: 'favorites', component: FavoritesPageComponent },
 ];
 
 @NgModule({

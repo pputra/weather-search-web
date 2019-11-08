@@ -7,7 +7,7 @@ import { ChartsModule } from 'ng2-charts'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WeatherPageComponent } from './weather-page/weather-page.component';
-import { FavoritesComponent } from './favorites/favorites.component';
+import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { WeatherSearchFormComponent } from './weather-search-form/weather-search-form.component';
 import { WeatherCardComponent } from './weather-card/weather-card.component';
 import { HourlyWeatherComponent } from './hourly-weather/hourly-weather.component';
@@ -17,7 +17,7 @@ import { LoaderComponent } from './loader/loader.component';
   declarations: [
     AppComponent,
     WeatherPageComponent,
-    FavoritesComponent,
+    FavoritesPageComponent,
     WeatherSearchFormComponent,
     WeatherCardComponent,
     HourlyWeatherComponent,

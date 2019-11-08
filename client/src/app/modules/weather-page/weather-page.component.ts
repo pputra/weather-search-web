@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../weather.service';
-import { LoaderService } from '../loader.service';
+import { WeatherService } from '../../services/weather.service';
+import { LoaderService } from '../../services/loader.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

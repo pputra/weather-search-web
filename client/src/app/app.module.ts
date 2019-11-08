@@ -6,13 +6,13 @@ import { ChartsModule } from 'ng2-charts'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WeatherPageComponent } from './weather-page/weather-page.component';
-import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
-import { WeatherSearchFormComponent } from './weather-search-form/weather-search-form.component';
-import { WeatherCardComponent } from './weather-card/weather-card.component';
-import { HourlyWeatherComponent } from './hourly-weather/hourly-weather.component';
-import { LoaderComponent } from './loader/loader.component';
-import { AlertComponent } from './alert/alert.component';
+import { WeatherPageComponent } from './modules/weather-page/weather-page.component';
+import { FavoritesPageComponent } from './modules/favorites-page/favorites-page.component';
+import { WeatherSearchFormComponent } from './modules/weather-search-form/weather-search-form.component';
+import { WeatherCardComponent } from './modules/weather-page/components/weather-card/weather-card.component';
+import { HourlyWeatherComponent } from './modules/weather-page/components/hourly-weather/hourly-weather.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WeatherPageComponent } from './weather-page/weather-page.component';
-import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
+import { WeatherPageComponent } from './modules/weather-page/weather-page.component';
+import { FavoritesPageComponent } from './modules/favorites-page/favorites-page.component';
 
 const routes: Routes = [
   { path: 'currentWeather', component: WeatherPageComponent },

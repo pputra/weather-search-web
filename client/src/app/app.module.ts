@@ -13,6 +13,7 @@ import { WeatherCardComponent } from './modules/weather-page/components/weather-
 import { HourlyWeatherComponent } from './modules/weather-page/components/hourly-weather/hourly-weather.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { WeeklyWeatherComponent } from './modules/weather-page/components/weekly-weather/weekly-weather.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AlertComponent } from './components/alert/alert.component';
     HourlyWeatherComponent,
     LoaderComponent,
     AlertComponent,
+    WeeklyWeatherComponent,
   ],
   imports: [
     BrowserModule,

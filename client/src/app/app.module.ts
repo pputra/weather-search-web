@@ -12,6 +12,7 @@ import { WeatherSearchFormComponent } from './weather-search-form/weather-search
 import { WeatherCardComponent } from './weather-card/weather-card.component';
 import { HourlyWeatherComponent } from './hourly-weather/hourly-weather.component';
 import { LoaderComponent } from './loader/loader.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LoaderComponent } from './loader/loader.component';
     WeatherCardComponent,
     HourlyWeatherComponent,
     LoaderComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

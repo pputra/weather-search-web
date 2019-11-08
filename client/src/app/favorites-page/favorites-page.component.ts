@@ -17,13 +17,9 @@ export class FavoritesPageComponent implements OnInit {
 
   createFavoritesFromLocalStorage() {
     for (let i = 0; i < localStorage.length; i++) {
-      const city = localStorage.key(i);
-      const data = JSON.parse(localStorage.getItem(city));
-      this.favorites.push({
-        city,
-        state: data.state,
-        image: data.image,
-      });
+      const storageId = localStorage.key(i);
+      const favoriteData = JSON.parse(localStorage.getItem(storageId));
+      this.favorites.push({ ...favoriteData });
     }
   }
 

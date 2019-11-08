@@ -105,6 +105,8 @@ export class WeatherSearchFormComponent implements OnInit {
       useCurrentLocation,
     } = addressData;
 
+    this.activePage = 'results';
+
     if (useCurrentLocation) {
       this.weatherService.getUserCoordinate().subscribe((result: any) => {
         const {

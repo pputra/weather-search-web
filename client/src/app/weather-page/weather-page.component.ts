@@ -97,22 +97,28 @@ export class WeatherPageComponent implements OnInit {
   }
 
   setIsFavorited() {
-    this.isFavorited = localStorage.getItem(this.city) !== null;
+    const storageId = this.city + this.state;
+    this.isFavorited = localStorage.getItem(storageId) !== null;
   }
 
   toggleFavorite() {
-    const hasBeenAdded = localStorage.getItem(this.city) !== null;
+    const storageId = this.city + this.state;
+    const hasBeenAdded = localStorage.getItem(storageId) !== null;
+
     if (!hasBeenAdded) {
-      localStorage.setItem(this.city, this.createLocalStorageFavoriteData(this.city, this.state, this.stateSeal));
+      localStorage.setItem(storageId, this.createLocalStorageFavoriteData(this.city, this.state, this.stateSeal));
     } else {
-      localStorage.removeItem(this.city);
+      localStorage.removeItem(storageId);
     }
 
     this.setIsFavorited();
   }
 
   createLocalStorageFavoriteData(city, state, image) {
+    const storageId = city + state;
+
     return JSON.stringify({
+      id: storageId,
       city,
       state,
       image,

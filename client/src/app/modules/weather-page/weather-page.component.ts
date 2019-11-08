@@ -24,7 +24,7 @@ export class WeatherPageComponent implements OnInit {
     private weatherService: WeatherService,
     private loaderService: LoaderService,
   ) { 
-    this.activeTab = 'current';
+    this.activeTab = 'weekly';
 
     loaderService.isLoading.subscribe((val: any) => {
       this.isLoading = val;

@@ -11,8 +11,8 @@ export class WeatherService {
   }
 
   getWeatherDataByFullAddress(street: string, city: string, state: string) {
-    const url = `${this.DEFAULT_URL}/weather?street=${street}&city=${city}&state=${state}`
-    //const url = `assets/dummy/${state}.json`;
+    // const url = `${this.DEFAULT_URL}/weather?street=${street}&city=${city}&state=${state}`
+    const url = `assets/dummy/${state}.json`;
 
     return this.http.get(url);
   }

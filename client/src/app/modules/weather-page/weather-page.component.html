@@ -39,6 +39,7 @@
   </app-hourly-weather>
   <app-weekly-weather
     *ngIf="activeTab ==='weekly'"
+    [weeklyDataSet]=weeklyDataSet
   >
   </app-weekly-weather>
 </ng-container>

@@ -14,6 +14,7 @@ export class WeatherPageComponent implements OnInit {
   stateSeal;
   weatherData;
   hourlyDataSet;
+  weeklyDataSet;
 
   activeTab;
   isLoading;
@@ -58,6 +59,7 @@ export class WeatherPageComponent implements OnInit {
           this.weatherData = weatherData;;
 
           this.createHourlyDataSet();
+          this.createWeeklyDataSet();
           loaderService.isLoading.next(false);
         });
       } else {
@@ -71,6 +73,7 @@ export class WeatherPageComponent implements OnInit {
           this.weatherData = weatherData;;
 
           this.createHourlyDataSet();
+          this.createWeeklyDataSet();
           loaderService.isLoading.next(false);
         });
       }
@@ -94,6 +97,27 @@ export class WeatherPageComponent implements OnInit {
 
   getHourlyDataByType(type: string) {
     return this.weatherData.hourly.data.map((el) => el[type]);
+  }
+
+  createWeeklyDataSet() {
+    const numData = this.weatherData.daily.data.length;
+    this.weeklyDataSet = this.weatherData.daily.data.map((data, i) => ({ 
+      x: this.createWeeklyDataSetIndex(i, numData),
+      y: [ data.temperatureLow, data.temperatureHigh ],
+      label: this.convertUnixTimeToLocalTime(data.time, this.weatherData.offset),
+    }));
+  }
+
+  createWeeklyDataSetIndex(i, numData) {
+    return numData * 10 - i * 10;
+  }
+
+  convertUnixTimeToLocalTime(epochTimeStamp, offset) {
+    const localTime = new Date(epochTimeStamp * 1000 + offset * 3600000);
+    const year = localTime.getUTCFullYear();
+    const month = localTime.getUTCMonth() + 1;
+    const date = localTime.getUTCDate();
+    return [date, month, year].join('/');
   }
 
   setIsFavorited() {

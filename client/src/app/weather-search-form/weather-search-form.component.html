@@ -90,3 +90,25 @@
   </form>
 </div>
 <div>
+
+<div class="row mt-4 d-flex justify-content-center" style="margin: 0 auto;">
+  <div class="mr-4">
+    <button 
+    type="button"
+    class="btn btn-primary rounded border border-dark text-muted bg-white"
+    [ngClass]="{'active-nav-btn ': activePage === 'results'}"
+  >
+    Results
+  </button>
+  </div>
+  <div>
+    <button 
+      type="button"
+      class="btn btn-primary rounded border border-dark text-muted bg-white" 
+      [ngClass]="{'active-nav-btn ': activePage === 'favorites'}"
+      (click)="navigateToFavoritesPage()"
+    >
+      Favorites
+    </button>
+  </div>
+</div>

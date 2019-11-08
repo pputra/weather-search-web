@@ -4,3 +4,8 @@
   background-color: #5A87A2;
   padding: 5% 5%;
 }
+
+.active-nav-btn {
+  background-color: #5A87A2 !important;
+  color: #ffffff !important;
+}

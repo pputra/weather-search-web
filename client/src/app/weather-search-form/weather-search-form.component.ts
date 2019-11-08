@@ -14,6 +14,7 @@ export class WeatherSearchFormComponent implements OnInit {
   showErrorMessages;
   statesOptions;
   disabledSearch;
+  activePage;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -90,6 +91,8 @@ export class WeatherSearchFormComponent implements OnInit {
     };
 
     this.disabledSearch = true;
+
+    this.activePage = 'results';
   
     this.onInputChanges();
   }
@@ -196,6 +199,7 @@ export class WeatherSearchFormComponent implements OnInit {
     };
     this.onInputChanges();
     this.router.navigate(['/']);
+    this.activePage = 'results';
     this.loaderService.isLoading.next(false);
   }
 
@@ -207,6 +211,11 @@ export class WeatherSearchFormComponent implements OnInit {
     }
 
     return hasEmptyInput;
+  }
+
+  navigateToFavoritesPage() {
+    this.activePage = 'favorites';
+    this.router.navigate(['/favorites']);
   }
 
   ngOnInit() {

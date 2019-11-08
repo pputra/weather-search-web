@@ -111,6 +111,7 @@ export class WeatherSearchFormComponent implements OnInit {
           lat,
           lon,
           city,
+          region: state,
         } = result;
 
         this.router.navigate(['/currentWeather'], {
@@ -118,6 +119,7 @@ export class WeatherSearchFormComponent implements OnInit {
             lat,
             lon,
             city,
+            state,
           },
         });
       });

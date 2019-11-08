@@ -10,12 +10,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class WeatherPageComponent implements OnInit {
   city;
+  state;
   stateSeal;
   weatherData;
   hourlyDataSet;
 
   activeTab;
   isLoading;
+  isFavorited;
   
   constructor(
     private activeRoute: ActivatedRoute,
@@ -37,6 +39,10 @@ export class WeatherPageComponent implements OnInit {
         lon,
       } = queries;
 
+      this.city =city;
+      this.state = state;
+      this.setIsFavorited();
+
       loaderService.isLoading.next(true);
 
       const useCurrentLocation = lat !== undefined && lon !== undefined;
@@ -47,7 +53,7 @@ export class WeatherPageComponent implements OnInit {
             stateSeal,
             weatherData,
           } = response;
-          this.city = city;
+
           this.stateSeal = stateSeal;
           this.weatherData = weatherData;;
 
@@ -60,7 +66,7 @@ export class WeatherPageComponent implements OnInit {
             stateSeal,
             weatherData,
           } = response;
-          this.city = city;
+
           this.stateSeal = stateSeal;
           this.weatherData = weatherData;;
 
@@ -88,6 +94,21 @@ export class WeatherPageComponent implements OnInit {
 
   getHourlyDataByType(type: string) {
     return this.weatherData.hourly.data.map((el) => el[type]);
+  }
+
+  setIsFavorited() {
+    this.isFavorited = localStorage.getItem(this.city) !== null;
+  }
+
+  toggleFavorite() {
+    const hasBeenAdded = localStorage.getItem(this.city) !== null;
+    if (!hasBeenAdded) {
+      localStorage.setItem(this.city, this.state);
+    } else {
+      localStorage.removeItem(this.city);
+    }
+
+    this.setIsFavorited();
   }
 
   ngOnInit() {

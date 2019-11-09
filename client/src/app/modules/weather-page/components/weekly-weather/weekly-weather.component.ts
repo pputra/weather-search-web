@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as CanvasJS from '../../../../../assets/canvasjs';
+import { WeatherService } from '../../../../services/weather/weather.service';
 
 @Component({
   selector: 'app-weekly-weather',
@@ -12,7 +13,9 @@ export class WeeklyWeatherComponent implements OnInit {
   @Input() lon;
   @Input() weeklyDataSet;
 
-  constructor() { }
+  constructor(
+    private weatherService: WeatherService
+  ) { }
 
   ngOnInit() {
     CanvasJS.addColorSet("blueShades", [ "#80C9F1" ]);
@@ -43,7 +46,16 @@ export class WeeklyWeatherComponent implements OnInit {
         legendText: "Day wise temperature range",
         toolTipContent: "<b>{label}</b>: {y[0]} to {y[1]}",
         dataPoints: this.weeklyDataSet,
-      }]
+        click: (e) => {
+          const time = e.dataPoint.time;
+          console.log(time);
+          console.log(this.lat);
+          console.log(this.lon);
+          this.weatherService.getWeatherDataByCoordinateAndTime(this.lat, this.lon, time).subscribe((val: any) => {
+            console.log(val);
+          });
+       },
+      }],
     });
     chart.render();
   }

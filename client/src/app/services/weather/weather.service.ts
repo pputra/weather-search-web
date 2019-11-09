@@ -22,6 +22,11 @@ export class WeatherService {
     return this.http.get(url);
   }
 
+  getWeatherDataByCoordinateAndTime(lat, lon, time) {
+    const url = `${this.DEFAULT_URL}/weather?lat=${lat}&lon=${lon}&time=${time}`;
+    return this.http.get(url);
+  }
+
   getUserCoordinate() {
     const url = 'http://ip-api.com/json';
 

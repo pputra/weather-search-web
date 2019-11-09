@@ -58,8 +58,9 @@ export class WeeklyWeatherComponent implements OnInit {
         toolTipContent: "<b>{label}</b>: {y[0]} to {y[1]}",
         dataPoints: this.weeklyDataSet,
         click: (e) => {
-          const time = e.dataPoint.time;
-          this.weatherService.getWeatherDataByCoordinateAndTime(this.lat, this.lon, time).subscribe((response: any) => {
+          const unixTime = e.dataPoint.time;
+          const localTime = e.dataPoint.label;
+          this.weatherService.getWeatherDataByCoordinateAndTime(this.lat, this.lon, unixTime).subscribe((response: any) => {
             const { weatherData: { 
               currently: {
                 temperature,
@@ -74,7 +75,7 @@ export class WeeklyWeatherComponent implements OnInit {
             } 
             } = response;
 
-            this.date = time;
+            this.date = localTime;
             this.temperature = temperature;
             this.summary = summary
             this.icon = icon

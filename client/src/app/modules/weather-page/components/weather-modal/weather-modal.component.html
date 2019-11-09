@@ -1,18 +1,46 @@
 <div class="modal fade" id="weather-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <div class="modal-header dark-blue-theme">
+        <h4 class="modal-title" id="exampleModalLabel">{{ date }}</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body row light-blue-theme">
+        <div class="col">
+          <h4>
+            {{ city }}
+          </h4>
+          <h4>
+            {{ temperature }} F
+          </h4>
+          <div>
+            {{ summary }}
+          </div>
+        </div>
+        <div class="col">
+          <img [src]="DETAIL_WEATHER_PNG_SOURCES[icon]" height="100px" width="100px">
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+      <div class="modal-footer light-blue-theme">
+        <div class="mr-5">
+          <div>
+            Precipitation : {{ precipitation }}
+          </div>
+          <div>
+            Chance of Rain : {{ chanceOfRain }} %
+          </div>
+          <div>
+            Wind Speed : {{ windSpeed }} mph
+          </div>
+          <div>
+            Humidity : {{ humidity }} %
+          </div>
+          <div>
+            Visibility : {{ visibility }} miles
+          </div>
+        </div>
       </div>
     </div>
   </div>

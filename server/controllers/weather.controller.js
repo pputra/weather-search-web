@@ -1,5 +1,5 @@
 const { getCoordinateByFullAddress } = require('../actions/geocoding.action');
-const { getWeatherByCoordinate } = require('../actions/weather.action');
+const { getWeatherByCoordinate , getWeatherByCoordinateAndTime} = require('../actions/weather.action');
 const { getStateSeal } = require('../actions/searchEngine.action');
 
 module.exports = {
@@ -11,11 +11,14 @@ module.exports = {
         state,
         lat,
         lon,
+        time,
       } = req.query;
 
       let weatherData;
 
-      if (lat && lon) {
+      if (lat && lon && time) {
+        weatherData = await getWeatherByCoordinateAndTime(lat, lon, time);
+      } else if (lat && lon) {
         weatherData = await getWeatherByCoordinate(lat, lon);
       } else {
         const { lat: latitude, lon: longitude } = await getCoordinateByFullAddress(street, city, state);

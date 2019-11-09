@@ -1,1 +1,22 @@
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<app-weather-modal
+  [date]=date
+  [temperature]=temperature
+  [summary]=summary
+  [icon]=icon
+  [precipitation]=precipitation
+  [chanceOfRain]=chanceOfRain
+  [windSpeed]=windSpeed
+  [humidity]=humidity
+  [visibility]=visibility
+>
+</app-weather-modal>
+<button 
+  type="button" 
+  class="btn btn-primary" 
+  data-toggle="modal" 
+  data-target="#weather-modal" 
+  style="display: none;" 
+  #modalTrigger 
+>
+</button>

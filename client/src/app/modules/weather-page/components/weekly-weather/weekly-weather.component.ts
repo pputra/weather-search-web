@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import * as CanvasJS from '../../../../../assets/canvasjs';
 import { WeatherService } from '../../../../services/weather/weather.service';
 
@@ -11,6 +11,8 @@ export class WeeklyWeatherComponent implements OnInit {
   @Input() city;
   @Input() lat;
   @Input() lon;
+  @Input() weeklyDataSet;
+  @ViewChild('modalTrigger', { static: false }) modalTrigger;
 
   date;
   temperature;
@@ -21,8 +23,6 @@ export class WeeklyWeatherComponent implements OnInit {
   windSpeed;
   humidity;
   visibility;
-
-  @Input() weeklyDataSet;
 
   constructor(
     private weatherService: WeatherService
@@ -83,11 +83,17 @@ export class WeeklyWeatherComponent implements OnInit {
             this.windSpeed = windSpeed;
             this.humidity = humidity;
             this.visibility = visibility;
+
+            this.showModal();
           });
        },
       }],
     });
     chart.render();
+  }
+
+  showModal() {
+    this.modalTrigger.nativeElement.click();
   }
 
 }

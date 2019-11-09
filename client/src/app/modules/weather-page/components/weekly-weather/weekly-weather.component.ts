@@ -11,6 +11,17 @@ export class WeeklyWeatherComponent implements OnInit {
   @Input() city;
   @Input() lat;
   @Input() lon;
+
+  date;
+  temperature;
+  summary;
+  icon;
+  precipitation;
+  chanceOfRain;
+  windSpeed;
+  humidity;
+  visibility;
+
   @Input() weeklyDataSet;
 
   constructor(
@@ -48,11 +59,30 @@ export class WeeklyWeatherComponent implements OnInit {
         dataPoints: this.weeklyDataSet,
         click: (e) => {
           const time = e.dataPoint.time;
-          console.log(time);
-          console.log(this.lat);
-          console.log(this.lon);
-          this.weatherService.getWeatherDataByCoordinateAndTime(this.lat, this.lon, time).subscribe((val: any) => {
-            console.log(val);
+          this.weatherService.getWeatherDataByCoordinateAndTime(this.lat, this.lon, time).subscribe((response: any) => {
+            const { weatherData: { 
+              currently: {
+                temperature,
+                summary,
+                icon,
+                precipIntensity,
+                precipProbability,
+                windSpeed,
+                humidity,
+                visibility,
+              } 
+            } 
+            } = response;
+
+            this.date = time;
+            this.temperature = temperature;
+            this.summary = summary
+            this.icon = icon
+            this.precipitation = precipIntensity;
+            this.chanceOfRain =  precipProbability;
+            this.windSpeed = windSpeed;
+            this.humidity = humidity;
+            this.visibility = visibility;
           });
        },
       }],

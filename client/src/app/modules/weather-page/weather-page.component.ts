@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class WeatherPageComponent implements OnInit {
   city;
   state;
+  lat;
+  lon;
   stateSeal;
   weatherData;
   hourlyDataSet;
@@ -56,7 +58,9 @@ export class WeatherPageComponent implements OnInit {
           } = response;
 
           this.stateSeal = stateSeal;
-          this.weatherData = weatherData;;
+          this.weatherData = weatherData;
+          this.lat = weatherData.latitude;
+          this.lon = weatherData.longitude;
 
           this.createHourlyDataSet();
           this.createWeeklyDataSet();
@@ -70,7 +74,9 @@ export class WeatherPageComponent implements OnInit {
           } = response;
 
           this.stateSeal = stateSeal;
-          this.weatherData = weatherData;;
+          this.weatherData = weatherData;
+          this.lat = weatherData.latitude;
+          this.lon = weatherData.longitude;
 
           this.createHourlyDataSet();
           this.createWeeklyDataSet();
@@ -105,6 +111,7 @@ export class WeatherPageComponent implements OnInit {
       x: this.createWeeklyDataSetIndex(i, numData),
       y: [ data.temperatureLow, data.temperatureHigh ],
       label: this.convertUnixTimeToLocalTime(data.time, this.weatherData.offset),
+      time: data.time,
     }));
   }
 

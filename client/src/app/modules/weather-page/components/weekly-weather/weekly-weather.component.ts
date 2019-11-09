@@ -7,6 +7,9 @@ import * as CanvasJS from '../../../../../assets/canvasjs';
   styleUrls: ['./weekly-weather.component.css']
 })
 export class WeeklyWeatherComponent implements OnInit {
+  @Input() city;
+  @Input() lat;
+  @Input() lon;
   @Input() weeklyDataSet;
 
   constructor() { }

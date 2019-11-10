@@ -77,17 +77,32 @@
       <label class="form-check-label" for="currLoc">Current location</label>
     </div>
     <div class="row ml-1">
-      <div class="col-4 col-lg-1 col-md-1">
+      <div class="col-4 col-lg-1 col-md-1 mr-4">
         <button 
         type="submit" 
-        class="btn btn-primary"
+        class="btn btn-primary rounded border border-dark text-muted bg-white text d-flex justify-content-center"
         [disabled]=disabledSearch
       >
-        Search
+        <i class="material-icons yellow">
+          search
+        </i>
+        <div>
+          Search
+        </div>
       </button>
       </div>
       <div class="col-2">
-        <button type="button" class="btn btn-primary" (click)="onResetForm()">Clear</button>
+        <button type="button" 
+          class="btn btn-primary rounded border border-dark text-muted bg-white d-flex justify-content-center" 
+          (click)="onResetForm()"
+        >
+          <i class="material-icons yellow">
+            clear_all
+          </i>
+          <div>
+            Clear
+          </div>
+        </button>
       </div>
     </div>
   </form>

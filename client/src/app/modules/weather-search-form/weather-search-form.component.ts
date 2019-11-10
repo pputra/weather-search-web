@@ -155,9 +155,9 @@ export class WeatherSearchFormComponent implements OnInit {
         return;
       }
 
-      this.weatherService.getCityAutoCompleteSuggestions(input).subscribe((response: any) => {
-        this.options = response.places;
-      });
+      // this.weatherService.getCityAutoCompleteSuggestions(input).subscribe((response: any) => {
+      //   this.options = response.places;
+      // });
   }
 
   toggleWarningMessages(key, val) {

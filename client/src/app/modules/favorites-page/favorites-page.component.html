@@ -1,6 +1,6 @@
 <ng-container *ngIf="hasFavorite;else warning">
   <table class="table">
-    <thead>
+    <thead class="dark-blue-theme text-center">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Image</th>
@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let favorite of favorites; let i = index">
+      <tr *ngFor="let favorite of favorites; let i = index" class="dark-blue-theme text-center" [ngClass]="{'light-blue-theme': i % 2 == 0}">
         <th scope="row">{{ i + 1 }}</th>
         <td><img [src]="favorite.image" height="40px" width="40px" ></td>
         <td>{{ favorite.city }}</td>
@@ -29,7 +29,7 @@
   </table>
 </ng-container>
 <ng-template #warning>
-  <app-alert
+  <app-alert 
     [message]="'No Records\.'"
   >
   </app-alert>

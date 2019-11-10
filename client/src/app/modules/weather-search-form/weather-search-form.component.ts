@@ -15,6 +15,7 @@ export class WeatherSearchFormComponent implements OnInit {
   statesOptions;
   disabledSearch;
   activePage;
+  options: string[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -148,6 +149,17 @@ export class WeatherSearchFormComponent implements OnInit {
     });
   }
 
+  onCityInputChanges(input) {
+      if (!input) {
+        this.options = [];
+        return;
+      }
+
+      this.weatherService.getCityAutoCompleteSuggestions(input).subscribe((response: any) => {
+        this.options = response.places;
+      });
+  }
+
   toggleWarningMessages(key, val) {
     this.showErrorMessages[key] = val === '' ? true : false;
   }
@@ -186,13 +198,15 @@ export class WeatherSearchFormComponent implements OnInit {
     this.addressForm.get('street').enable();
     this.addressForm.get('city').enable();
     this.addressForm.get('state').enable();
-  
+
     this.addressForm = this.formBuilder.group({
       street: '',
       city: '',
       state: '',
       useCurrentLocation: false,
     });
+
+    this.options = [];
 
     this.disabledSearch = true;
   
@@ -205,16 +219,6 @@ export class WeatherSearchFormComponent implements OnInit {
     this.router.navigate(['/']);
     this.activePage = 'results';
     this.loaderService.isLoading.next(false);
-  }
-
-  hasEmptyInputs(addressData: object) {
-    let hasEmptyInput = false;
-    for (let input in addressData) {
-      hasEmptyInput = hasEmptyInput || addressData[input] === null||  addressData[input].length === 0;
-      this.showErrorMessages[input] = addressData[input] === null||  addressData[input].length === 0;
-    }
-
-    return hasEmptyInput;
   }
 
   navigateToFavoritesPage() {

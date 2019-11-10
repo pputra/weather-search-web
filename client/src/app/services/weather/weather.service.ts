@@ -11,8 +11,8 @@ export class WeatherService {
   }
 
   getWeatherDataByFullAddress(street: string, city: string, state: string) {
-    //const url = `${this.DEFAULT_URL}/weather?street=${street}&city=${city}&state=${state}`
-    const url = `assets/dummy/${state}.json`;
+    const url = `${this.DEFAULT_URL}/weather?street=${street}&city=${city}&state=${state}`
+    //const url = `assets/dummy/${state}.json`;
 
     return this.http.get(url);
   }
@@ -23,8 +23,13 @@ export class WeatherService {
   }
 
   getWeatherDataByCoordinateAndTime(lat, lon, time) {
-   // const url = `${this.DEFAULT_URL}/weather?lat=${lat}&lon=${lon}&time=${time}`;
-    const url = `assets/dummy/CA.json`;
+   const url = `${this.DEFAULT_URL}/weather?lat=${lat}&lon=${lon}&time=${time}`;
+    //const url = `assets/dummy/CA.json`;
+    return this.http.get(url);
+  }
+
+  getCityAutoCompleteSuggestions(keyword) {
+    const url = `${this.DEFAULT_URL}/places?input=${keyword}`;
     return this.http.get(url);
   }
 

@@ -37,7 +37,14 @@
           placeholder="Enter City Name"
           formControlName="city" 
           (blur)="toggleWarningMessages('city', $event.target.value)"
+          [matAutocomplete]="auto"
+          (input)="onCityInputChanges($event.target.value)"
         >
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
         <small 
           id="city-input-empty-warning" 
           class="text-danger" 

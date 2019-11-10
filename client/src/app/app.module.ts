@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +38,9 @@ import { WeatherModalComponent } from './modules/weather-page/components/weather
     ReactiveFormsModule,
     HttpClientModule,
     ChartsModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -7,39 +7,43 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body row light-blue-theme">
-        <div class="col">
-          <h4>
-            {{ city }}
-          </h4>
-          <h4>
-            {{ temperature }} F
-          </h4>
-          <div>
-            {{ summary }}
+      <div class="modal-body  light-blue-theme">
+        <div id="modal-body" class="row ml-3 mr-3 pb-2">
+          <div class="col">
+            <h4>
+              {{ city }}
+            </h4>
+            <h4>
+              {{ temperature }} F
+            </h4>
+            <div>
+              {{ summary }}
+            </div>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <img [src]="DETAIL_WEATHER_PNG_SOURCES[icon]" height="90px" width="90px">
           </div>
         </div>
-        <div class="col">
-          <img [src]="DETAIL_WEATHER_PNG_SOURCES[icon]" height="100px" width="100px">
-        </div>
-      </div>
-      <div class="modal-footer light-blue-theme">
-        <div class="mr-5">
-          <div>
-            Precipitation : {{ precipitation }}
-          </div>
-          <div>
-            Chance of Rain : {{ chanceOfRain }} %
-          </div>
-          <div>
-            Wind Speed : {{ windSpeed }} mph
-          </div>
-          <div>
-            Humidity : {{ humidity }} %
-          </div>
-          <div>
-            Visibility : {{ visibility }} miles
-          </div>
+        <div class="row mt-3">
+            <div class="col">
+            </div>
+            <div class="col">
+              <div>
+                Precipitation : {{ precipitation }}
+              </div>
+              <div>
+                Chance of Rain : {{ chanceOfRain }} %
+              </div>
+              <div>
+                Wind Speed : {{ windSpeed }} mph
+              </div>
+              <div>
+                Humidity : {{ humidity }} %
+              </div>
+              <div>
+                Visibility : {{ visibility }} miles
+              </div>
+            </div>
         </div>
       </div>
     </div>

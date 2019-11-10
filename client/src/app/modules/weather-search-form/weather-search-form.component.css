@@ -1,8 +1,23 @@
 #search-form {
+  margin: 0 auto;
   margin-top: 2%;
-  width: 100%;
-  background-color: #5A87A2;
-  padding: 5% 5%;
+  width: 90%;
+  padding: 6% 10%;
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    #search-form {
+      width: 100%;
+      padding: 10% 4%;
+    }
+
+    #submit-btn {
+      margin-right: 1% !important;
+    }
 }
 
 .active-nav-btn {

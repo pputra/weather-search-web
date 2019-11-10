@@ -1,112 +1,117 @@
-<div id="search-form" class="text-white p-4 h-100 rounded border border-dark shadow-lg">
-  <form [formGroup]="addressForm" (ngSubmit)="onSubmit(addressForm.value)" class="p-1">
-    <div class="form-group mb-4">
-      <h1 class="text-center">Weather Search</h1>
-    </div>
-    <div class="form-group row mb-4">
-      <label for="street-input" class="col-sm-2 col-form-label">Street<span class="text-danger">*</span></label>
-      <div class="col-sm-7">
-        <input 
-          type="street" 
-          class="form-control" 
-          id="street-input" 
-          aria-describedby="streetHelp"
-          placeholder="Enter Street Name" 
-          formControlName="street" 
-          (blur)="toggleWarningMessages('street', $event.target.value)"
-        >
-        <small 
-          id="street-input-empty-warning" 
-          class="text-danger" 
-          *ngIf="showErrorMessages.street"
-        >
-          Please enter a street.
-        </small>
-      </div>
-    </div>
-    <div class="form-group row mb-4">
-      <label for="city-input" class="col-sm-2 col-form-label">City<span class="text-danger">*</span></label>
-      <div class="col-sm-7">
-        <input 
-          type="city"
-          class="form-control"
-          id="city-input"
-          aria-describedby="cityHelp"
-          placeholder="Enter City Name"
-          formControlName="city" 
-          (blur)="toggleWarningMessages('city', $event.target.value)"
-          [matAutocomplete]="auto"
-          (input)="onCityInputChanges($event.target.value)"
-        >
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of options" [value]="option">
-            {{ option }}
-          </mat-option>
-        </mat-autocomplete>
-        <small 
-          id="city-input-empty-warning" 
-          class="text-danger" 
-          *ngIf="showErrorMessages.city"
-        >
-          Please enter a city.
-        </small>
-      </div>
-    </div>
-    <div class="form-group row mb-4">
-      <label for="state-input" class="col-sm-2 col-form-label">State<span class="text-danger">*</span></label>
-      <div class="col-sm-5">
-        <select class="form-control" id="state-input" aria-describedby="stateHelp" formControlName="state">
-          <option *ngFor="let option of statesOptions | keyvalue" [value]="option.key"
-            [attr.selected]="option.value == '' ? true : null">
-            {{ option.value }}
-          </option>
-        </select>
-        <small id="state-input-empty-warning" class="text-danger" *ngIf="showErrorMessages.state">
-          Please enter a state.
-        </small>
-      </div>
-    </div>
-    <div class="form-group form-check">
+
+<form 
+  [formGroup]="addressForm" 
+  (ngSubmit)="onSubmit(addressForm.value)" 
+  id="search-form"
+  class="text-white h-100 rounded border border-dark shadow-lg dark-blue-theme"
+>
+  <div class="form-group mb-4">
+    <h1 class="text-center">Weather Search</h1>
+  </div>
+  <div class="form-group row mb-4">
+    <label for="street-input" class="col-sm-2 col-form-label">Street<span class="text-danger">*</span></label>
+    <div class="col-sm-7">
       <input 
-        type="checkbox" 
-        class="form-check-input" 
-        id="currLoc" 
-        formControlName="useCurrentLocation" 
-        (change)="toggleDisableInputs($event.target.checked)"
+        type="street" 
+        class="form-control" 
+        id="street-input" 
+        aria-describedby="streetHelp"
+        placeholder="Enter Street Name" 
+        formControlName="street" 
+        (blur)="toggleWarningMessages('street', $event.target.value)"
       >
-      <label class="form-check-label" for="currLoc">Current location</label>
+      <small 
+        id="street-input-empty-warning" 
+        class="text-danger" 
+        *ngIf="showErrorMessages.street"
+      >
+        Please enter a street.
+      </small>
     </div>
-    <div class="row ml-1">
-      <div class="col-4 col-lg-1 col-md-1 mr-4">
-        <button 
-        type="submit" 
-        class="btn btn-primary rounded border border-dark text-muted bg-white text d-flex justify-content-center"
-        [disabled]=disabledSearch
+  </div>
+  <div class="form-group row mb-4">
+    <label for="city-input" class="col-sm-2 col-form-label">City<span class="text-danger">*</span></label>
+    <div class="col-sm-7">
+      <input 
+        type="city"
+        class="form-control"
+        id="city-input"
+        aria-describedby="cityHelp"
+        placeholder="Enter City Name"
+        formControlName="city" 
+        (blur)="toggleWarningMessages('city', $event.target.value)"
+        [matAutocomplete]="auto"
+        (input)="onCityInputChanges($event.target.value)"
+      >
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+      <small 
+        id="city-input-empty-warning" 
+        class="text-danger" 
+        *ngIf="showErrorMessages.city"
+      >
+        Please enter a city.
+      </small>
+    </div>
+  </div>
+  <div class="form-group row mb-4">
+    <label for="state-input" class="col-sm-2 col-form-label">State<span class="text-danger">*</span></label>
+    <div class="col-sm-5">
+      <select class="form-control" id="state-input" aria-describedby="stateHelp" formControlName="state">
+        <option *ngFor="let option of statesOptions | keyvalue" [value]="option.key"
+          [attr.selected]="option.value == '' ? true : null">
+          {{ option.value }}
+        </option>
+      </select>
+      <small id="state-input-empty-warning" class="text-danger" *ngIf="showErrorMessages.state">
+        Please enter a state.
+      </small>
+    </div>
+  </div>
+  <div class="form-group form-check">
+    <input 
+      type="checkbox" 
+      class="form-check-input" 
+      id="currLoc" 
+      formControlName="useCurrentLocation" 
+      (change)="toggleDisableInputs($event.target.checked)"
+    >
+    <label class="form-check-label" for="currLoc">Current location</label>
+  </div>
+  <div class="row ml-1">
+    <div id="submit-btn"  class="col-4 col-lg-1 col-md-1 mr-5">
+      <button 
+      type="submit" 
+      class="btn btn-primary rounded border border-dark text-muted bg-white text d-flex justify-content-center"
+      [disabled]=disabledSearch
+    >
+      <i class="material-icons yellow">
+        search
+      </i>
+      <div>
+        Search
+      </div>
+    </button>
+    </div>
+    <div class="col-2">
+      <button type="button" 
+        class="btn btn-primary rounded border border-dark text-muted bg-white d-flex justify-content-center" 
+        (click)="onResetForm()"
       >
         <i class="material-icons yellow">
-          search
+          clear_all
         </i>
         <div>
-          Search
+          Clear
         </div>
       </button>
-      </div>
-      <div class="col-2">
-        <button type="button" 
-          class="btn btn-primary rounded border border-dark text-muted bg-white d-flex justify-content-center" 
-          (click)="onResetForm()"
-        >
-          <i class="material-icons yellow">
-            clear_all
-          </i>
-          <div>
-            Clear
-          </div>
-        </button>
-      </div>
     </div>
-  </form>
-</div>
+  </div>
+</form>
+
 <div>
 <div class="row mt-4 d-flex justify-content-center" style="margin: 0 auto;">
   <div class="mr-4">

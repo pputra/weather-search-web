@@ -1,3 +1,8 @@
 .material-icons.yellow { 
   color: #ecd209;
 }
+
+.city-col {
+  color: #0918ec;
+  cursor: pointer;
+}

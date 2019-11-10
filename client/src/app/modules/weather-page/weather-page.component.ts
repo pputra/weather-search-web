@@ -27,7 +27,7 @@ export class WeatherPageComponent implements OnInit {
     private weatherService: WeatherService,
     private loaderService: LoaderService,
   ) { 
-    this.activeTab = 'weekly';
+    this.activeTab = 'current';
 
     loaderService.isLoading.subscribe((val: any) => {
       this.isLoading = val;
@@ -137,7 +137,9 @@ export class WeatherPageComponent implements OnInit {
     const hasBeenAdded = localStorage.getItem(storageId) !== null;
 
     if (!hasBeenAdded) {
-      localStorage.setItem(storageId, this.createLocalStorageFavoriteData(this.city, this.state, this.stateSeal));
+      localStorage.setItem(storageId, 
+        this.createLocalStorageFavoriteData(this.city, this.state,
+        this.stateSeal, this.lat, this.lon));
     } else {
       localStorage.removeItem(storageId);
     }
@@ -145,7 +147,7 @@ export class WeatherPageComponent implements OnInit {
     this.setIsFavorited();
   }
 
-  createLocalStorageFavoriteData(city, state, image) {
+  createLocalStorageFavoriteData(city, state, image, lat, lon) {
     const storageId = city + state;
 
     return JSON.stringify({
@@ -153,6 +155,8 @@ export class WeatherPageComponent implements OnInit {
       city,
       state,
       image,
+      lat,
+      lon,
     });
   }
 

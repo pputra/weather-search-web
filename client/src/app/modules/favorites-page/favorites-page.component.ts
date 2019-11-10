@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favorites-page',
@@ -8,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class FavoritesPageComponent implements OnInit {
   hasFavorite;
   favorites = [];
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.hasFavorite = localStorage.length > 0;
@@ -30,4 +33,14 @@ export class FavoritesPageComponent implements OnInit {
     this.createFavoritesFromLocalStorage();
   }
 
+  openFavoriteCity(lat, lon, city, state) {
+    this.router.navigate(['/currentWeather'], {
+      queryParams: {
+        lat,
+        lon,
+        city,
+        state,
+      },
+    });
+  }
 }

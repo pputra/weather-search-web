@@ -1,21 +1,25 @@
 <ng-container *ngIf="!isLoading && !isError">
-  <ul class="nav nav-tabs mb-5">
-    <li class="nav-item">
-      <a class="nav-link" (click)="setActiveTab('current')" [ngClass]="{active: activeTab ==='current'}">Current</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" (click)="setActiveTab('hourly')" [ngClass]="{active: activeTab ==='hourly'}">Hourly</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" (click)="setActiveTab('weekly')" [ngClass]="{active: activeTab ==='weekly'}">Weekly</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link twitter-share-button" [href]="twitterUrl" target="'_blank'">tweet</a>
-    </li>
-    <button class="btn btn-light" (click)="toggleFavorite()">
-      <i class="material-icons active-favorite" *ngIf="isFavorited; else elseBlock">star</i>
-      <ng-template #elseBlock><i class="material-icons">star_border</i></ng-template>
-    </button>
+  <ul class="nav nav-tabs mb-5 justify-content-between">
+    <div class="form-inline">
+      <li class="nav-item">
+        <a class="nav-link" (click)="setActiveTab('current')" [ngClass]="{active: activeTab ==='current'}">Current</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="setActiveTab('hourly')" [ngClass]="{active: activeTab ==='hourly'}">Hourly</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="setActiveTab('weekly')" [ngClass]="{active: activeTab ==='weekly'}">Weekly</a>
+      </li>
+    </div>
+    <div class="form-inline">
+      <li class="nav-item">
+          <a class="nav-link twitter-share-button" [href]="twitterUrl" target="'_blank'">tweet</a>
+      </li>
+      <button class="btn btn-sm btn-light" (click)="toggleFavorite()">
+        <i class="material-icons active-favorite" *ngIf="isFavorited; else elseBlock">star</i>
+        <ng-template #elseBlock><i class="material-icons">star_border</i></ng-template>
+      </button>
+    </div>
   </ul>
   <app-weather-card 
     *ngIf="activeTab ==='current'"

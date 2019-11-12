@@ -11,13 +11,14 @@ export class HourlyWeatherComponent implements OnInit {
   activeChart;
   chartOptions;
   chartConfigs;
-  barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
   barChartLabels = [ ...Array(24).keys() ];
   barChartType = 'bar';
   barChartLegend = true;
+  barColors = [
+    {
+      backgroundColor: this.createBackgroundColors('#80C9F1', 24),
+    }
+  ];
 
   constructor() {
     this.activeChart = 'temperature'
@@ -31,8 +32,42 @@ export class HourlyWeatherComponent implements OnInit {
     };
   }
 
+  createBackgroundColors(color, numData) {
+    const colors = [];
+
+    for (let i = 0; i < numData; i++) {
+      colors.push(color);
+    }
+
+    return colors;
+  }
+
   createChartConfig(label, data, yAxisLabel) {
-    return { data: [ { data: data, label: label } ], yAxisLabel: yAxisLabel };
+    return { 
+      data: [ { data: data, label: label } ],
+      barChartOptions: {
+        scaleShowVerticalLines: false,
+        responsive: true,
+        legend: {
+          onClick: (e) => e.stopPropagation(),
+        },
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: yAxisLabel
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'time difference from current hour'
+            }
+          }],
+        },
+        backgroundColor: [ '#80C9F1' ],
+      },
+    };
   }
 
   setActiveChart(dataType) {

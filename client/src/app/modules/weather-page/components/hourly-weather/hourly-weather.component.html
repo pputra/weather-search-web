@@ -17,9 +17,10 @@
         baseChart 
         [datasets]="config.value.data" 
         [labels]="barChartLabels" 
-        [options]="barChartOptions"
+        [options]="config.value.barChartOptions"
         [legend]="barChartLegend" 
         [chartType]="barChartType"
+        [colors]="barColors"
       >
       </canvas>
   </div>

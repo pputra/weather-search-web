@@ -71,6 +71,8 @@ export class WeatherPageComponent implements OnInit {
           this.createHourlyDataSet();
           this.createWeeklyDataSet();
           loaderService.isLoading.next(false);
+        }, (err: any) => {
+          alert(err.message);
         });
       } else {
         weatherService.getWeatherDataByFullAddress(street, city, state, true).subscribe((response: any) => {
@@ -90,9 +92,15 @@ export class WeatherPageComponent implements OnInit {
           this.createHourlyDataSet();
           this.createWeeklyDataSet();
           loaderService.isLoading.next(false);
+        }, (err: any) => {
+          alert(err.message);
         });
       }
     });
+  }
+
+  handleError() {
+    // TODO
   }
 
   setActiveTab(tab) {

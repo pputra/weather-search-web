@@ -1,49 +1,42 @@
-<ng-container *ngIf="hasFavorite;else warning">
-  <table class="table">
-    <thead class="dark-blue-theme text-center">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Image</th>
-        <th scope="col">City</th>
-        <th scope="col">State</th>
-        <th scope="col">Favorites</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let favorite of favorites; let i = index" class="dark-blue-theme text-center" [ngClass]="{'light-blue-theme': i % 2 == 0}">
-        <th scope="row">{{ i + 1 }}</th>
-        <td><img [src]="favorite.image" height="40px" width="40px" ></td>
-        <td 
-          class="city-col"
-          (click)="openFavoriteCity(favorite.lat, favorite.lon, favorite.city, favorite.state)"
+<table class="table" *ngIf="hasFavorite">
+  <thead class="dark-blue-theme text-center">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Favorites</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let favorite of favorites; let i = index" class="dark-blue-theme text-center" [ngClass]="{'light-blue-theme': i % 2 == 0}">
+      <th scope="row">{{ i + 1 }}</th>
+      <td><img [src]="favorite.image" height="40px" width="40px" ></td>
+      <td 
+        class="city-col"
+        (click)="openFavoriteCity(favorite.lat, favorite.lon, favorite.city, favorite.state)"
+      >
+        <Div 
+          matTooltip="{{favorite.city}}"
+          [matTooltipPosition]="TOOL_TIP_POSITION"
         >
-          <Div 
-            matTooltip="{{favorite.city}}"
-            [matTooltipPosition]="TOOL_TIP_POSITION"
-          >
-            {{ favorite.city }}
-          </Div>
+          {{ favorite.city }}
+        </Div>
+      </td>
+      <td>
+        {{ favorite.state }}
         </td>
-        <td>
-          {{ favorite.state }}
-         </td>
-        <td>
-          <button 
-            type="button" 
-            class="btn btn-light"
-            (click)="removeFromFavorite(favorite.id)"
-          >
-            <i class="material-icons yellow">delete</i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</ng-container>
-<ng-template #warning>
-  <app-alert 
-    [message]="'No Records\.'"
-  >
-  </app-alert>
-</ng-template>
+      <td>
+        <button 
+          type="button" 
+          class="btn btn-light"
+          (click)="removeFromFavorite(favorite.id)"
+        >
+          <i class="material-icons yellow">delete</i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 

@@ -18,6 +18,7 @@ export class WeatherCardComponent implements OnInit {
   @Input() cloudCover;
   @Input() ozone;
   WEATHER_ICON_SOURCES;
+  TOOL_TIP_POSITION ='above';
 
   constructor() { 
    this.WEATHER_ICON_SOURCES = {

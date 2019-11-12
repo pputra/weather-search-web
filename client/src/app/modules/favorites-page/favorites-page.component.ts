@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class FavoritesPageComponent implements OnInit {
   hasFavorite;
   favorites = [];
+  TOOL_TIP_POSITION = 'below';
   constructor(
     private router: Router,
   ) { }

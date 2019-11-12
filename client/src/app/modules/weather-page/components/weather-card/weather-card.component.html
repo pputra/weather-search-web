@@ -21,7 +21,12 @@
   <div class="row mt-3">
     <div class="col icon">
       <div>
-        <img [src]="WEATHER_ICON_SOURCES.humidity" height="50px" width="50px" >
+        <img 
+          [src]="WEATHER_ICON_SOURCES.humidity"
+          height="50px" width="50px"
+          matTooltip="Humidity"
+          [matTooltipPosition]="TOOL_TIP_POSITION"
+        >
       </div>
       <div>
         {{ humidity }}
@@ -29,7 +34,12 @@
     </div>
     <div class="col icon">
       <div>
-        <img [src]="WEATHER_ICON_SOURCES.pressure" height="50px" width="50px" >
+        <img 
+          [src]="WEATHER_ICON_SOURCES.pressure"
+          height="50px" width="50px"
+          matTooltip="Pressure"
+          [matTooltipPosition]="TOOL_TIP_POSITION"
+        >
       </div>
       <div>
         {{ pressure }}
@@ -37,7 +47,13 @@
     </div>
     <div class="col icon">
       <div>
-        <img [src]="WEATHER_ICON_SOURCES.windSpeed" height="50px" width="50px" >
+        <img 
+          [src]="WEATHER_ICON_SOURCES.windSpeed"
+          height="50px"
+          width="50px"
+          matTooltip="WindSpeed"
+          [matTooltipPosition]="TOOL_TIP_POSITION" 
+        >
       </div>
       <div>
         {{ windSpeed }}
@@ -45,7 +61,13 @@
     </div>
     <div class="col icon">
       <div>
-        <img [src]="WEATHER_ICON_SOURCES.visibility" height="50px" width="50px" >
+        <img
+          [src]="WEATHER_ICON_SOURCES.visibility"
+          height="50px"
+          width="50px"
+          matTooltip="Visibility"
+          [matTooltipPosition]="TOOL_TIP_POSITION"
+        >
       </div>
       <div>
         {{ visibility }}
@@ -53,7 +75,13 @@
     </div>
     <div class="col icon">
       <div>
-        <img [src]="WEATHER_ICON_SOURCES.cloudCover" height="50px" width="50px" >
+        <img
+          [src]="WEATHER_ICON_SOURCES.cloudCover"
+          height="50px"
+          width="50px"
+          matTooltip="CloudCover"
+          [matTooltipPosition]="TOOL_TIP_POSITION"
+        >
       </div>
       <div>
         {{ cloudCover }}
@@ -61,7 +89,13 @@
     </div>
     <div class="col icon">
       <div>
-        <img [src]="WEATHER_ICON_SOURCES.ozone" height="50px" width="50px" >
+        <img
+          [src]="WEATHER_ICON_SOURCES.ozone"
+          height="50px"
+          width="50px"
+          matTooltip="Ozone"
+          [matTooltipPosition]="TOOL_TIP_POSITION"
+        >
       </div>
       <div>
         {{ ozone }}

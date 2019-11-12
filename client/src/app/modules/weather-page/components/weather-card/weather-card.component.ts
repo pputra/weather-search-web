@@ -19,6 +19,7 @@ export class WeatherCardComponent implements OnInit {
   @Input() ozone;
   WEATHER_ICON_SOURCES;
   TOOL_TIP_POSITION ='above';
+  DEGREE_PNG = 'https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_shape_oval-512.png';
 
   constructor() { 
    this.WEATHER_ICON_SOURCES = {

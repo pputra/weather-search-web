@@ -7,8 +7,16 @@
       <div class="mb-3">
         <h1>{{ timezone }}</h1>
       </div>
-      <div class="mb-3">
-        <h1>{{ temperature }}F</h1>
+      <div class="mb-3 d-flex justify-content-start">
+        <div class="mr-1">
+          <h1>{{ temperature }}</h1>
+        </div>
+        <div class="mr-1">
+          <img [src]="DEGREE_PNG" width="15px" height="15px">
+        </div>
+        <div>
+          <h1>F</h1>
+        </div>
       </div>
       <div class="mb-3">
         <h2>{{ summary }}</h2>

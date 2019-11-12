@@ -17,6 +17,9 @@ export class WeatherModalComponent implements OnInit {
   @Input() humidity;
   @Input() visibility;
 
+  DEGREE_PNG = 'https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_shape_oval-512.png';
+
+
   DETAIL_WEATHER_PNG_SOURCES = {
     'clear-day': 'https://cdn3.iconfinder.com/data/icons/weather-344/142/sun-512.png',
     'clear-night': 'https://cdn3.iconfinder.com/data/icons/weather-344/142/sun-512.png',

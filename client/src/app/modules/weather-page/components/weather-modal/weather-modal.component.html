@@ -13,9 +13,17 @@
             <h4>
               {{ city }}
             </h4>
-            <h4>
-              {{ temperature }} F
-            </h4>
+            <div class="d-flex justify-content-start">
+                <div class="mr-1">
+                  <h1>{{ temperature }}</h1>
+                </div>
+                <div class="mr-1">
+                  <img [src]="DEGREE_PNG" width="15px" height="15px">
+                </div>
+                <div>
+                  <h1>F</h1>
+                </div>
+              </div>
             <div>
               {{ summary }}
             </div>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WeatherService } from '../../services/weather/weather.service';
 import { LoaderService } from '../../services/loader/loader.service';
+import { AlertService } from '../../services/alert/alert.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -22,13 +23,15 @@ export class WeatherPageComponent implements OnInit {
 
   activeTab;
   isLoading;
+  isError = false;
   isFavorited;
   twitterUrl;
-  
+
   constructor(
     private activeRoute: ActivatedRoute,
     private weatherService: WeatherService,
     private loaderService: LoaderService,
+    private alertService: AlertService,
   ) { 
     this.activeTab = 'current';
 
@@ -50,6 +53,8 @@ export class WeatherPageComponent implements OnInit {
       this.setIsFavorited();
 
       loaderService.isLoading.next(true);
+      this.isError = false;
+      alertService.message.next('');
 
       const useCurrentLocation = lat !== undefined && lon !== undefined;
 
@@ -72,7 +77,7 @@ export class WeatherPageComponent implements OnInit {
           this.createWeeklyDataSet();
           loaderService.isLoading.next(false);
         }, (err: any) => {
-          alert(err.message);
+          this.handleError(err);
         });
       } else {
         weatherService.getWeatherDataByFullAddress(street, city, state, true).subscribe((response: any) => {
@@ -93,14 +98,16 @@ export class WeatherPageComponent implements OnInit {
           this.createWeeklyDataSet();
           loaderService.isLoading.next(false);
         }, (err: any) => {
-          alert(err.message);
+          this.handleError(err);
         });
       }
     });
   }
 
-  handleError() {
-    // TODO
+  handleError(err) {
+    this.isError = true;
+    this.loaderService.isLoading.next(false);
+    this.alertService.message.next(err.error.message);
   }
 
   setActiveTab(tab) {
@@ -182,6 +189,10 @@ export class WeatherPageComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.alertService.message.next('');
   }
 
 }

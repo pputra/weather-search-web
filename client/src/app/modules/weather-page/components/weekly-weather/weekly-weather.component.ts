@@ -28,6 +28,20 @@ export class WeeklyWeatherComponent implements OnInit {
     private weatherService: WeatherService
   ) { }
 
+  toPercentage(num) {
+    return Math.round(num * 100);
+  }
+
+  toTwoDecimalPlaces(num) {
+    if (Number.isInteger(num)) return num;
+
+    return num.toFixed(2);
+  }
+
+  showModal() {
+    this.modalTrigger.nativeElement.click();
+  }
+
   ngOnInit() {
     CanvasJS.addColorSet("blueShades", [ "#80C9F1" ]);
 
@@ -75,15 +89,15 @@ export class WeeklyWeatherComponent implements OnInit {
             } 
             } = response;
 
-            this.date = localTime;
+            this.date = localTime === undefined || localTime === null ? 'N/A' : localTime;
             this.temperature = temperature;
-            this.summary = summary
+            this.summary = summary === undefined || summary === null ? 'N/A' : summary;
             this.icon = icon
-            this.precipitation = precipIntensity;
-            this.chanceOfRain =  precipProbability;
-            this.windSpeed = windSpeed;
-            this.humidity = humidity;
-            this.visibility = visibility;
+            this.precipitation = precipIntensity === undefined || precipIntensity === null ? 'N/A' : this.toTwoDecimalPlaces(precipIntensity);
+            this.chanceOfRain =  precipProbability === undefined || precipProbability === null ? 'N/A' : `${this.toPercentage(precipProbability)} %`;
+            this.windSpeed = windSpeed === undefined || windSpeed === null ? 'N/A' : `${this.toTwoDecimalPlaces(windSpeed)} mph`;
+            this.humidity = humidity === undefined || humidity === null ? 'N/A' : `${this.toPercentage(humidity)} %`;
+            this.visibility = visibility === undefined || visibility === null ? 'N/A' : `${this.toTwoDecimalPlaces(visibility)} miles`;
 
             this.showModal();
           });
@@ -91,10 +105,6 @@ export class WeeklyWeatherComponent implements OnInit {
       }],
     });
     chart.render();
-  }
-
-  showModal() {
-    this.modalTrigger.nativeElement.click();
   }
 
 }

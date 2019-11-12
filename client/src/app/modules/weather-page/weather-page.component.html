@@ -10,7 +10,7 @@
       <a class="nav-link" (click)="setActiveTab('weekly')" [ngClass]="{active: activeTab ==='weekly'}">Weekly</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link">twitter icon</a>
+        <a class="nav-link twitter-share-button" [href]="twitterUrl" target="'_blank'">tweet</a>
     </li>
     <button class="btn btn-light" (click)="toggleFavorite()">
       <i class="material-icons active-favorite" *ngIf="isFavorited; else elseBlock">star</i>

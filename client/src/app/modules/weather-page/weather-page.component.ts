@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class WeatherPageComponent implements OnInit {
   city;
   state;
+  temperature;
+  summary;
   lat;
   lon;
   stateSeal;
@@ -21,6 +23,7 @@ export class WeatherPageComponent implements OnInit {
   activeTab;
   isLoading;
   isFavorited;
+  twitterUrl;
   
   constructor(
     private activeRoute: ActivatedRoute,
@@ -61,6 +64,9 @@ export class WeatherPageComponent implements OnInit {
           this.weatherData = weatherData;
           this.lat = weatherData.latitude;
           this.lon = weatherData.longitude;
+          this.temperature = weatherData.currently.temperature;
+          this.summary = weatherData.currently.summary;
+          this.setTwitterUrl();
 
           this.createHourlyDataSet();
           this.createWeeklyDataSet();
@@ -77,6 +83,9 @@ export class WeatherPageComponent implements OnInit {
           this.weatherData = weatherData;
           this.lat = weatherData.latitude;
           this.lon = weatherData.longitude;
+          this.temperature = weatherData.currently.temperature;
+          this.summary = weatherData.currently.summary;
+          this.setTwitterUrl();
 
           this.createHourlyDataSet();
           this.createWeeklyDataSet();
@@ -158,6 +167,10 @@ export class WeatherPageComponent implements OnInit {
       lat,
       lon,
     });
+  }
+
+  setTwitterUrl() {
+    this.twitterUrl = `https://twitter.com/intent/tweet?text=The%20current%20temperature%20at%20${this.city}%20is%20${this.temperature}%C2%B0%20F.%20The%20weather%20conditions%20are%20${this.summary}.%20%23CSCI571WeatherSearch`
   }
 
   ngOnInit() {

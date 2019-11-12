@@ -54,7 +54,7 @@ export class WeatherPageComponent implements OnInit {
       const useCurrentLocation = lat !== undefined && lon !== undefined;
 
       if (useCurrentLocation) {
-        weatherService.getWeatherDataByCoordinate(lat, lon).subscribe((response: any) => {
+        weatherService.getWeatherDataByCoordinate(lat, lon, state, true).subscribe((response: any) => {
           const {
             stateSeal,
             weatherData,
@@ -73,7 +73,7 @@ export class WeatherPageComponent implements OnInit {
           loaderService.isLoading.next(false);
         });
       } else {
-        weatherService.getWeatherDataByFullAddress(street, city, state).subscribe((response: any) => {
+        weatherService.getWeatherDataByFullAddress(street, city, state, true).subscribe((response: any) => {
           const {
             stateSeal,
             weatherData,

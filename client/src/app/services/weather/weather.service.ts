@@ -10,21 +10,21 @@ export class WeatherService {
     this.DEFAULT_URL = 'http://localhost:3000';
   }
 
-  getWeatherDataByFullAddress(street: string, city: string, state: string) {
-    //const url = `${this.DEFAULT_URL}/weather?street=${street}&city=${city}&state=${state}`
-    const url = `assets/dummy/${state}.json`;
+  getWeatherDataByFullAddress(street: string, city: string, state: string, requestStateSeal = false) {
+    const url = `${this.DEFAULT_URL}/weather?street=${street}&city=${city}&state=${state}&state_seal=${requestStateSeal}`
+    //const url = `assets/dummy/${state}.json`;
 
     return this.http.get(url);
   }
 
-  getWeatherDataByCoordinate(lat, lon) {
-    const url = `${this.DEFAULT_URL}/weather?lat=${lat}&lon=${lon}`;
+  getWeatherDataByCoordinate(lat, lon, state, requestStateSeal= false) {
+    const url = `${this.DEFAULT_URL}/weather?lat=${lat}&lon=${lon}&state=${state}&state_seal=${requestStateSeal}`;
     return this.http.get(url);
   }
 
-  getWeatherDataByCoordinateAndTime(lat, lon, time) {
-   //const url = `${this.DEFAULT_URL}/weather?lat=${lat}&lon=${lon}&time=${time}`;
-    const url = `assets/dummy/CA.json`;
+  getWeatherDataByCoordinateAndTime(lat, lon, time, requestStateSeal = false) {
+   const url = `${this.DEFAULT_URL}/weather?lat=${lat}&lon=${lon}&time=${time}&state_seal=${requestStateSeal}`;
+    //const url = `assets/dummy/CA.json`;
     return this.http.get(url);
   }
 

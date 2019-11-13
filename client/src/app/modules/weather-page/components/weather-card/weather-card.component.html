@@ -4,14 +4,14 @@
       <div class="mb-3">
         <h1>{{ city }}</h1>
       </div>
-      <div class="mb-3">
+      <div class="mb-3" style="color: rgb(56, 90, 124);">
         <h1>{{ timezone }}</h1>
       </div>
       <div class="mb-3 d-flex justify-content-start">
         <div class="mr-1">
           <h1>{{ temperature }}</h1>
         </div>
-        <div class="mr-1">
+        <div id="degree-icon"  class="mr-1">
           <img [src]="DEGREE_PNG" width="15px" height="15px">
         </div>
         <div>
@@ -22,40 +22,43 @@
         <h2>{{ summary }}</h2>
       </div>
     </div>
-    <div class="col-2">
-        <img [src]="stateSeal" height="200px" width="200px">
+    <div id="state-seal-container"  class="col-2">
+        <img id="state-seal" [src]="stateSeal" height="200px" width="200px">
     </div>
   </div>
   <div class="row mt-3">
     <div class="col icon" *ngIf="humidity !== undefined && humidity !== null && humidity !== 0">
       <div>
         <img 
+          class="weather-icon"
           [src]="WEATHER_ICON_SOURCES.humidity"
           height="50px" width="50px"
           matTooltip="Humidity"
           [matTooltipPosition]="TOOL_TIP_POSITION"
         >
       </div>
-      <div>
+      <div class="weather-data-text">
         {{ humidity }}
       </div>
     </div>
     <div class="col icon" *ngIf="pressure !== undefined && pressure !== null && pressure !== 0">
       <div>
         <img 
+          class="weather-icon"
           [src]="WEATHER_ICON_SOURCES.pressure"
           height="50px" width="50px"
           matTooltip="Pressure"
           [matTooltipPosition]="TOOL_TIP_POSITION"
         >
       </div>
-      <div>
+      <div class="weather-data-text">
         {{ pressure }}
       </div>
     </div>
     <div class="col icon" *ngIf="windSpeed !== undefined && windSpeed !== null && windSpeed !== 0">
       <div>
-        <img 
+        <img
+          class="weather-icon"
           [src]="WEATHER_ICON_SOURCES.windSpeed"
           height="50px"
           width="50px"
@@ -63,13 +66,14 @@
           [matTooltipPosition]="TOOL_TIP_POSITION" 
         >
       </div>
-      <div>
+      <div class="weather-data-text">
         {{ windSpeed }}
       </div>
     </div>
     <div class="col icon" *ngIf="visibility !== undefined && visibility !== null && visibility !== 0">
       <div>
         <img
+          class="weather-icon"
           [src]="WEATHER_ICON_SOURCES.visibility"
           height="50px"
           width="50px"
@@ -77,13 +81,14 @@
           [matTooltipPosition]="TOOL_TIP_POSITION"
         >
       </div>
-      <div>
+      <div class="weather-data-text">
         {{ visibility }}
       </div>
     </div>
     <div class="col icon" *ngIf="cloudCover !== undefined && cloudCover !== null && cloudCover !== 0">
       <div>
         <img
+          class="weather-icon"
           [src]="WEATHER_ICON_SOURCES.cloudCover"
           height="50px"
           width="50px"
@@ -91,13 +96,14 @@
           [matTooltipPosition]="TOOL_TIP_POSITION"
         >
       </div>
-      <div>
+      <div class="weather-data-text">
         {{ cloudCover }}
       </div>
     </div>
     <div class="col icon" *ngIf="ozone !== undefined && ozone !== null && ozone !== 0">
       <div>
         <img
+          class="weather-icon"
           [src]="WEATHER_ICON_SOURCES.ozone"
           height="50px"
           width="50px"
@@ -105,7 +111,7 @@
           [matTooltipPosition]="TOOL_TIP_POSITION"
         >
       </div>
-      <div>
+      <div class="weather-data-text">
         {{ ozone }}
       </div>
       </div>

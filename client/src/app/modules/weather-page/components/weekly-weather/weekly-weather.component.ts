@@ -59,6 +59,7 @@ export class WeeklyWeatherComponent implements OnInit {
         includeZero: false,
         title: "Temperature in Fahrenheit",
         interval: 10,
+        gridThickness: 0,
       },
       legend: {
         horizontalAlign: "center",

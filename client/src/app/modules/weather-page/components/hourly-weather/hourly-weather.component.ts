@@ -70,6 +70,10 @@ export class HourlyWeatherComponent implements OnInit {
     };
   }
 
+  convertDataToPercentage(type) {
+    this.hourlyDataSet[type] = this.hourlyDataSet[type].map((el) => Math.round(el * 100));
+  }
+
   setActiveChart(dataType) {
     this.activeChart = dataType;
   }
@@ -79,6 +83,8 @@ export class HourlyWeatherComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.convertDataToPercentage('humidity');
+  
     this.chartConfigs = {
       temperature: this.createChartConfig('temperature', this.hourlyDataSet.temperature, 'Fahrenheit'),
       pressure: this.createChartConfig('pressure', this.hourlyDataSet.pressure, 'Millibars'),

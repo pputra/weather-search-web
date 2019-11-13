@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="row mt-3">
-    <div class="col icon">
+    <div class="col icon" *ngIf="humidity !== undefined && humidity !== null && humidity !== 0">
       <div>
         <img 
           [src]="WEATHER_ICON_SOURCES.humidity"
@@ -40,7 +40,7 @@
         {{ humidity }}
       </div>
     </div>
-    <div class="col icon">
+    <div class="col icon" *ngIf="pressure !== undefined && pressure !== null && pressure !== 0">
       <div>
         <img 
           [src]="WEATHER_ICON_SOURCES.pressure"
@@ -53,7 +53,7 @@
         {{ pressure }}
       </div>
     </div>
-    <div class="col icon">
+    <div class="col icon" *ngIf="windSpeed !== undefined && windSpeed !== null && windSpeed !== 0">
       <div>
         <img 
           [src]="WEATHER_ICON_SOURCES.windSpeed"
@@ -67,7 +67,7 @@
         {{ windSpeed }}
       </div>
     </div>
-    <div class="col icon">
+    <div class="col icon" *ngIf="visibility !== undefined && visibility !== null && visibility !== 0">
       <div>
         <img
           [src]="WEATHER_ICON_SOURCES.visibility"
@@ -81,7 +81,7 @@
         {{ visibility }}
       </div>
     </div>
-    <div class="col icon">
+    <div class="col icon" *ngIf="cloudCover !== undefined && cloudCover !== null && cloudCover !== 0">
       <div>
         <img
           [src]="WEATHER_ICON_SOURCES.cloudCover"
@@ -95,7 +95,7 @@
         {{ cloudCover }}
       </div>
     </div>
-    <div class="col icon">
+    <div class="col icon" *ngIf="ozone !== undefined && ozone !== null && ozone !== 0">
       <div>
         <img
           [src]="WEATHER_ICON_SOURCES.ozone"

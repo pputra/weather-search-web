@@ -46,6 +46,7 @@ export class WeeklyWeatherComponent implements OnInit {
     CanvasJS.addColorSet("blueShades", [ "#80C9F1" ]);
 
     const chart = new CanvasJS.Chart("chartContainer", {
+      dataPointWidth: 14,
       colorSet: "blueShades",
       animationEnabled: true,
       exportEnabled: false,

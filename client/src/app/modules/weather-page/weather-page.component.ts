@@ -133,7 +133,7 @@ export class WeatherPageComponent implements OnInit {
     const numData = this.weatherData.daily.data.length;
     this.weeklyDataSet = this.weatherData.daily.data.map((data, i) => ({ 
       x: this.createWeeklyDataSetIndex(i, numData),
-      y: [ data.temperatureLow, data.temperatureHigh ],
+      y: [ Math.round(data.temperatureLow), Math.round(data.temperatureHigh )],
       label: this.convertUnixTimeToLocalTime(data.time, this.weatherData.offset),
       time: data.time,
     }));

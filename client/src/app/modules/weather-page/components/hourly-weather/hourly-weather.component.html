@@ -1,4 +1,4 @@
-<select class="form-control" id="exampleFormControlSelect1" (change)="setActiveChart($event.target.value)">
+<select id="hourly-chart-options" class="form-control" (change)="setActiveChart($event.target.value)">
   <option  
     *ngFor="let option of chartOptions | keyvalue:sortObjectByIndex" 
     [value]="option.value"

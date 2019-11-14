@@ -47,3 +47,31 @@
       height: 20px;
     }
 }
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait)
+and (-webkit-min-device-pixel-ratio: 2) { 
+  #card-container {
+    margin: 0 auto;
+    width: 75% !important;
+    padding: 15px 20px !important;
+  }
+
+  #card-container h1, h2 {
+    font-size: 22px;
+  }
+
+  #degree-icon {
+    position: relative;
+    bottom: 15px;
+  }
+
+  #state-seal {
+    height: 180px;
+    width: 180px;
+    position: relative;
+    right: 62px;
+  }
+}

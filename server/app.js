@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', root);
+app.use('/api', root);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

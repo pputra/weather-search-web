@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class WeatherService {
   DEFAULT_URL;
   constructor(private http: HttpClient) { 
-    this.DEFAULT_URL = 'http://localhost:3000';
+    this.DEFAULT_URL = 'http://nedcjemqinx-env.hv9pzfkbwm.us-west-1.elasticbeanstalk.com/api';
   }
 
   getWeatherDataByFullAddress(street: string, city: string, state: string, requestStateSeal = false) {

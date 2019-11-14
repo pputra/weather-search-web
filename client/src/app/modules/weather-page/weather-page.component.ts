@@ -65,6 +65,7 @@ export class WeatherPageComponent implements OnInit {
             weatherData,
           } = response;
 
+          weatherData.currently.temperature = Math.round(weatherData.currently.temperature);
           this.stateSeal = stateSeal;
           this.weatherData = weatherData;
           this.lat = weatherData.latitude;
@@ -86,6 +87,7 @@ export class WeatherPageComponent implements OnInit {
             weatherData,
           } = response;
 
+          weatherData.currently.temperature = Math.round(weatherData.currently.temperature);
           this.stateSeal = stateSeal;
           this.weatherData = weatherData;
           this.lat = weatherData.latitude;

@@ -92,7 +92,7 @@ export class WeeklyWeatherComponent implements OnInit {
             } = response;
 
             this.date = localTime === undefined || localTime === null ? 'N/A' : localTime;
-            this.temperature = temperature;
+            this.temperature = Math.round(temperature);
             this.summary = summary === undefined || summary === null ? 'N/A' : summary;
             this.icon = icon
             this.precipitation = precipIntensity === undefined || precipIntensity === null ? 'N/A' : this.toTwoDecimalPlaces(precipIntensity);

@@ -128,6 +128,7 @@ export class WeatherPageComponent implements OnInit {
   }
 
   getHourlyDataByType(type: string) {
+    if (type === 'temperature') return this.weatherData.hourly.data.map((el) => Math.round(el[type]));
     return this.weatherData.hourly.data.map((el) => el[type]);
   }
 

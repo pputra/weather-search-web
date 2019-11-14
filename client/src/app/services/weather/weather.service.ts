@@ -12,7 +12,7 @@ export class WeatherService {
 
   getWeatherDataByFullAddress(street: string, city: string, state: string, requestStateSeal = false) {
     const url = `${this.DEFAULT_URL}/weather?street=${street}&city=${city}&state=${state}&state_seal=${requestStateSeal}`
-    //const url = `assets/dummy/${state}.json`;
+    // const url = `assets/dummy/${state}.json`;
 
     return this.http.get(url);
   }

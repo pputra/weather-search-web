@@ -166,9 +166,6 @@ export class WeatherSearchFormComponent implements OnInit {
 
   toggleDisableInputs(isDisabled) { 
     if (isDisabled) {
-      this.addressForm.get('street').setValue('');
-      this.addressForm.get('city').setValue('');
-      this.addressForm.get('state').setValue('');
       this.addressForm.get('street').disable();
       this.addressForm.get('city').disable();
       this.addressForm.get('state').disable();

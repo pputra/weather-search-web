@@ -1,7 +1,7 @@
 <div class="modal fade" id="weather-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header dark-blue-theme">
+      <div id="date-modal" class="modal-header dark-blue-theme">
         <h4 class="modal-title" id="exampleModalLabel">{{ date }}</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -9,22 +9,22 @@
       </div>
       <div class="modal-body  light-blue-theme">
         <div id="modal-body" class="row ml-3 mr-3 pb-2">
-          <div class="col">
+          <div class="col lg-font-modal">
             <h2>
               {{ city }}
             </h2>
             <div class="d-flex justify-content-start">
-                <div class="mr-1">
+                <div class="mr-1 lg-font-modal">
                   <h1>{{ temperature }}</h1>
                 </div>
                 <div class="mr-1">
-                  <img [src]="DEGREE_PNG" width="15px" height="15px">
+                  <img id="degree-modal-icon" [src]="DEGREE_PNG" width="15px" height="15px">
                 </div>
                 <div>
                   <h1>F</h1>
                 </div>
               </div>
-            <div>
+            <div id="summary-modal">
               {{ summary }}
             </div>
           </div>
@@ -35,7 +35,7 @@
         <div class="row mt-3">
             <div class="col">
             </div>
-            <div class="col">
+            <div id="modal-footer" class="col">
               <div>
                 Precipitation : {{ precipitation }}
               </div>

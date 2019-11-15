@@ -1,3 +1,36 @@
 #modal-body {
   border-bottom: 0.1px solid rgb(112, 183, 228);
 }
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    #date-modal h4 {
+      font-size: 21px !important;
+    }
+
+    .lg-font-modal h2 {
+      font-size: 21px !important;
+    }
+
+    .lg-font-modal h1 {
+      font-size: 24px !important;
+    }
+    
+    #degree-modal-icon {
+      position: relative;
+      top: -16%;
+    }
+
+    #summary-modal {
+      font-size: 11px;
+    }
+
+    #modal-footer {
+      position: relative;
+      right: 42%;
+      font-size: 11px;
+    }
+}

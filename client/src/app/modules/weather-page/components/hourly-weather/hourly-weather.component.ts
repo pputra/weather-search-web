@@ -42,6 +42,24 @@ export class HourlyWeatherComponent implements OnInit {
     return colors;
   }
 
+  getMaxValueFromData(data) {
+    data.splice(24, data.length);
+    return Math.max(...data);
+  }
+
+  getMinValueFromData(data) {
+    data.splice(24, data.length);
+    return Math.min(...data);
+  }
+
+  getSuggestedMaxTick(max, min){
+    return Math.round((max - min) * 0.4 + max);
+  }
+
+  getSuggestedMinTick(max, min) {
+    return Math.round(min - (max - min) * 0.3);
+  }
+
   createChartConfig(label, data, yAxisLabel) {
     return { 
       data: [ { data: data, label: label } ],
@@ -56,6 +74,11 @@ export class HourlyWeatherComponent implements OnInit {
             scaleLabel: {
               display: true,
               labelString: yAxisLabel
+            },
+            ticks: {
+              precision:0,
+              suggestedMax: this.getSuggestedMaxTick(this.getMaxValueFromData(data), this.getMinValueFromData(data)),
+              suggestedMin: this.getSuggestedMinTick(this.getMaxValueFromData(data), this.getMinValueFromData(data)),
             }
           }],
           xAxes: [{

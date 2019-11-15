@@ -6,3 +6,7 @@
   color: #0918ec;
   cursor: pointer;
 }
+
+td {
+  white-space: nowrap;
+}
